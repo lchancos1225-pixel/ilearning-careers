@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="学生・就活生向けの就職支援サービス。インターンシップ紹介、企業説明会、ES添削、面接対策まで。アイ・ラーニングが完全無料でサポートします。">
+  <title>学生の方へ | アイ・ラーニング キャリア支援</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .service-detail {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .service-detail:last-child { border-bottom: none; }
+    .service-detail:nth-child(even) { background: var(--bg); }
+    .service-detail-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .service-detail-inner.reverse { direction: rtl; }
+    .service-detail-inner.reverse > * { direction: ltr; }
+    .service-detail-badge {
+      display: inline-block;
+      background: rgba(26,79,153,0.1);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .service-detail h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .service-detail p {
+      color: var(--text-light);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .feature-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .service-detail:nth-child(even) .feature-item { background: var(--white); }
+    .feature-item .fi-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .feature-item .fi-text strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 2px;
+    }
+    .feature-item .fi-text span {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+    /* ビジュアルボックス */
+    .visual-box {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      color: var(--white);
+      text-align: center;
+    }
+    .visual-box .big-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    .visual-box h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .visual-box p {
+      opacity: 0.85;
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
+    .visual-stat-row {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .v-stat .num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+    .v-stat .lbl {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+    /* FAQ */
+    .faq-section { padding: 100px 0; background: var(--bg); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 24px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      transition: var(--transition);
+    }
+    .faq-q:hover { background: var(--bg); }
+    .faq-q .q-badge {
+      background: var(--primary);
+      color: var(--white);
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 900;
+      flex-shrink: 0;
+    }
+    .faq-a {
+      padding: 0 24px 0 66px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.2s;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 24px 20px 66px;
+    }
+    .service-img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .service-detail-inner { grid-template-columns: 1fr; }
+      .service-detail-inner.reverse { direction: ltr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">iL</div>
+          <div class="logo-text">
+            <span class="company">株式会社</span>
+            <span class="brand">アイ・<span>ラーニング</span></span>
+          </div>
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="for-students.html" class="active">学生の方へ</a></li>
+            <li><a href="jobs.html">求人情報</a></li>
+            <li><a href="for-companies.html">企業の方へ</a></li>
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="contact.html" class="nav-cta">無料相談する</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ページヒーロー -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">ホーム</a> &rsaquo; 学生の方へ</p>
+      <h1>🎓 学生・就活生の方へ</h1>
+      <p>42年の教育実績を持つアイ・ラーニングが、あなたの就職活動を完全無料でサポートします。</p>
+    </div>
+  </section>
+
+  <!-- 無料バナー -->
+  <div style="background:var(--accent); color:#fff; text-align:center; padding:16px; font-weight:700; font-size:1.05rem;">
+    🎉 学生向けサービスはすべて完全無料！ — まずはお気軽にご登録ください
+  </div>
+
+  <!-- サービス詳細: インターンシップ -->
+  <section class="service-detail" id="internship">
+    <div class="container">
+      <div class="service-detail-inner">
+        <div class="reveal">
+          <span class="service-detail-badge">💼 インターンシップ紹介</span>
+          <h2>自分に合った<br>インターンシップで<br>未来を見つける</h2>
+          <p>
+            就職活動を始める前に、まず「実際の仕事」に触れることが大切です。
+            アイ・ラーニングでは業界・職種を問わない幅広いインターンシップを紹介。
+            あなたの適性と希望に合わせて、最適な体験機会をご提案します。
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="fi-icon">🔍</span>
+              <div class="fi-text">
+                <strong>50業界以上・200社超の求人</strong>
+                <span>IT・金融・メーカー・コンサル・エンタメなど幅広い業種をカバー</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">📅</span>
+              <div class="fi-text">
+                <strong>1day〜長期まで対応</strong>
+                <span>学業との両立ができる短期から、スキルが身につく長期型まで選べます</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">🗺</span>
+              <div class="fi-text">
+                <strong>オンライン・対面どちらも</strong>
+                <span>地方在住でも参加できるリモートインターンも多数ご用意</span>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary">インターンシップに申し込む →</a>
+        </div>
+        <div class="reveal">
+          <img src="../sozai/インターンシップ紹介.png" alt="インターンシップ紹介" class="service-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- サービス詳細: 企業説明会 -->
+  <section class="service-detail" id="seminar">
+    <div class="container">
+      <div class="service-detail-inner reverse">
+        <div class="reveal">
+          <img src="../sozai/企業説明会.png" alt="企業説明会" class="service-img">
+        </div>
+        <div class="reveal">
+          <span class="service-detail-badge">🏢 企業説明会</span>
+          <h2>人事担当者と<br>直接話せる<br>リアルな場を提供</h2>
+          <p>
+            ウェブ情報だけではわからない会社の雰囲気・社風を、
+            実際の担当者との対話を通じて感じ取れます。
+            毎月開催する合同説明会・個別説明会で、企業との出会いを増やしましょう。
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="fi-icon">🤝</span>
+              <div class="fi-text">
+                <strong>合同説明会（月2回以上）</strong>
+                <span>複数の企業が一堂に集まる効率的なイベント</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">🎯</span>
+              <div class="fi-text">
+                <strong>個別企業説明会</strong>
+                <span>志望度の高い企業に絞った深掘りセッション</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">💬</span>
+              <div class="fi-text">
+                <strong>OB・OG交流会</strong>
+                <span>先輩社員のリアルな声を聞けるカジュアルな場</span>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary">説明会に参加申し込み →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- サービス詳細: 就職アドバイス -->
+  <section class="service-detail" id="advice">
+    <div class="container">
+      <div class="service-detail-inner">
+        <div class="reveal">
+          <span class="service-detail-badge">📚 就職アドバイス</span>
+          <h2>塾講師経験者が<br>伝える、就活の<br>本質的なアドバイス</h2>
+          <p>
+            「何がしたいかわからない」「自己分析の仕方がわからない」—そんな悩みから始まって大丈夫。
+            アイ・ラーニングのカウンセラーは元塾講師も多く、生徒の可能性を引き出してきた教育アプローチで
+            就活の軸づくりを丁寧にサポートします。
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="fi-icon">🧭</span>
+              <div class="fi-text">
+                <strong>自己分析・価値観整理</strong>
+                <span>あなたの強み・やりたいことを言語化し、就活軸を固めます</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">🗺</span>
+              <div class="fi-text">
+                <strong>業界・職種研究サポート</strong>
+                <span>向いている業界・職種を一緒に分析します</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">📆</span>
+              <div class="fi-text">
+                <strong>就活スケジュール管理</strong>
+                <span>試験・ES提出・面接日程を計画的に管理するお手伝い</span>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary">カウンセリングを予約する →</a>
+        </div>
+        <div class="reveal">
+          <img src="../sozai/キャリアカウンセリング.png" alt="就職アドバイス" class="service-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- サービス詳細: レジュメ -->
+  <section class="service-detail" id="resume">
+    <div class="container">
+      <div class="service-detail-inner reverse">
+        <div class="reveal">
+          <img src="../sozai/ES添削.png" alt="ES・ES添削" class="service-img">
+        </div>
+        <div class="reveal">
+          <span class="service-detail-badge">✏️ レジュメ・ES添削</span>
+          <h2>「伝わる」文章で<br>選考を突破する<br>レジュメ指導</h2>
+          <p>
+            学習塾で鍛えた「論理的に、わかりやすく書く力」の指導ノウハウをESに活用。
+            自己PRや志望動機の構成から表現まで、合格レベルに引き上げます。
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="fi-icon">📄</span>
+              <div class="fi-text">
+                <strong>ES・自己PR添削</strong>
+                <span>企業・業界ごとに合わせた書き方を具体的にアドバイス</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">💼</span>
+              <div class="fi-text">
+                <strong>履歴書・職務経歴書の作成支援</strong>
+                <span>フォーマット選定から記入例まで徹底サポート</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">🔁</span>
+              <div class="fi-text">
+                <strong>何度でも添削OK</strong>
+                <span>納得できるまで繰り返し改善をお手伝いします</span>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary">ES添削を申し込む →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- サービス詳細: 面接対策 -->
+  <section class="service-detail" id="interview">
+    <div class="container">
+      <div class="service-detail-inner">
+        <div class="reveal">
+          <span class="service-detail-badge">🎤 面接対策</span>
+          <h2>実践形式の<br>模擬面接で<br>自信をつける</h2>
+          <p>
+            面接は「話す技術」だけでなく「聴く力」と「考える力」が問われます。
+            アイ・ラーニングでは実際の面接官経験を持つスタッフが、
+            本番さながらの模擬面接を実施。フィードバックを繰り返すことで確実に力がつきます。
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="fi-icon">🎭</span>
+              <div class="fi-text">
+                <strong>1対1 模擬面接</strong>
+                <span>志望企業に合わせた想定質問で本番形式を体験</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">👥</span>
+              <div class="fi-text">
+                <strong>グループ面接・GD対策</strong>
+                <span>チームでの立ち回り方・発言タイミングを指導</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="fi-icon">🎬</span>
+              <div class="fi-text">
+                <strong>録画フィードバック</strong>
+                <span>自分の話し方・表情・姿勢を映像で確認して改善</span>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary">面接対策を申し込む →</a>
+        </div>
+        <div class="reveal">
+          <img src="../sozai/面接対策.png" alt="面接対策" class="service-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title reveal">よくあるご質問</h2>
+      <p class="section-sub reveal"><span></span>学生のみなさんからよく寄せられる疑問<span></span></p>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-badge">Q</span>
+            アイ・ラーニングの卒業生以外でも利用できますか？
+            <span style="margin-left:auto; font-size:1.2rem;">＋</span>
+          </div>
+          <div class="faq-a">はい、卒業生でなくてもご利用いただけます。現在大学・専門学校に在学中の方、第二新卒の方、キャリアチェンジを検討中の方など、幅広くご相談に応じております。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-badge">Q</span>
+            費用はかかりますか？
+            <span style="margin-left:auto; font-size:1.2rem;">＋</span>
+          </div>
+          <div class="faq-a">学生の皆様への就職支援サービスはすべて完全無料でご提供しています。カウンセリング、ES添削、模擬面接、説明会への参加、すべて無料です。採用が決まった企業側よりご紹介料をいただく仕組みになっております。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-badge">Q</span>
+            就活を始めたばかりで何もわからないのですが大丈夫ですか？
+            <span style="margin-left:auto; font-size:1.2rem;">＋</span>
+          </div>
+          <div class="faq-a">もちろんです。「まだ何も決まっていない」「自己分析の仕方もわからない」という段階からのご相談が最も多いです。まず無料カウンセリングにお越しいただき、一緒にスタート地点を確認することから始めましょう。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-badge">Q</span>
+            オンラインでの相談は可能ですか？
+            <span style="margin-left:auto; font-size:1.2rem;">＋</span>
+          </div>
+          <div class="faq-a">はい、Zoom・Google Meetを利用したオンラインカウンセリングにも対応しています。地方在住の方や移動が難しい方もご安心ください。ES添削もメールやオンラインツールで対応可能です。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-badge">Q</span>
+            理系・文系どちらでも対応してもらえますか？
+            <span style="margin-left:auto; font-size:1.2rem;">＋</span>
+          </div>
+          <div class="faq-a">はい、文系・理系を問わずご支援しています。IT・エンジニア職から、営業・企画・マーケティング、金融・コンサルまで、幅広い求人をご紹介可能です。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">一歩踏み出す勇気が<br>未来を変えます</h2>
+      <p class="reveal">今すぐ無料登録して、あなたの就職活動をスタートさせましょう。</p>
+      <div class="cta-buttons reveal">
+        <a href="contact.html" class="btn btn-primary">無料で相談する →</a>
+        <a href="../index.html" class="btn btn-secondary">トップページへ戻る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <div class="logo-icon">iL</div>
+            <div class="logo-text">
+              <span class="company">株式会社</span>
+              <span class="brand" style="color:#fff">アイ・ラーニング</span>
+            </div>
+          </a>
+          <p class="footer-desc">42年の教育実績を活かした人材紹介・就職支援。<br>学生と企業を、最高の形でつなぎます。</p>
+          <address class="footer-address">〒901-2133 沖縄県浦添市城間1-2-1<br>TEL: 098-878-4119<br>受付時間: 平日 10:00〜18:00</address>
+        </div>
+        <div class="footer-col">
+          <h4>学生の方へ</h4>
+          <a href="for-students.html#internship">インターンシップ紹介</a>
+          <a href="for-students.html#seminar">企業説明会</a>
+          <a href="for-students.html#advice">就職アドバイス</a>
+          <a href="for-students.html#resume">レジュメ添削</a>
+          <a href="for-students.html#interview">面接対策</a>
+        </div>
+        <div class="footer-col">
+          <h4>企業の方へ</h4>
+          <a href="for-companies.html">新卒採用支援</a>
+          <a href="for-companies.html#intern">インターン受入</a>
+        </div>
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <a href="about.html">会社概要</a>
+          <a href="contact.html">お問い合わせ</a>
+          <a href="#">プライバシーポリシー</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 株式会社アイ・ラーニング. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

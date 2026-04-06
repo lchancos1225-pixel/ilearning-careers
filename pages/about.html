@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="株式会社アイ・ラーニングの会社概要。1977年の事業開始以来、教育一筋に歩んできた私たちが人材紹介・就職支援に取り組む理由をご紹介します。">
+  <title>会社概要 | アイ・ラーニング キャリア支援</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .about-section { padding: 100px 0; }
+    .about-section:nth-child(even) { background: var(--bg); }
+
+    /* 会社概要テーブル */
+    .company-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+    .company-table th, .company-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .company-table th {
+      width: 220px;
+      background: rgba(26,79,153,0.06);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+    .company-table td { color: var(--text); }
+    .company-table tr:last-child th,
+    .company-table tr:last-child td { border-bottom: none; }
+
+    /* ミッション */
+    .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }
+    .mission-card {
+      text-align: center;
+      padding: 44px 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: var(--transition);
+    }
+    .mission-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .mission-card .m-icon { font-size: 2.8rem; margin-bottom: 16px; }
+    .mission-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 10px; }
+    .mission-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.75; }
+
+    /* 沿革タイムライン */
+    .history-timeline { max-width: 760px; margin: 52px auto 0; position: relative; }
+    .history-timeline::before {
+      content: ""; position: absolute;
+      top: 0; bottom: 0; left: 100px;
+      width: 2px; background: var(--border);
+    }
+    .history-item { display: flex; gap: 0; margin-bottom: 32px; }
+    .history-year {
+      min-width: 100px;
+      font-size: 1rem; font-weight: 800;
+      color: var(--primary); padding-top: 4px;
+    }
+    .history-dot {
+      width: 14px; height: 14px;
+      background: var(--primary);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--primary);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+    .history-desc {
+      padding-left: 24px;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.7;
+      padding-top: 4px;
+    }
+
+    /* メンバー */
+    .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+    .member-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .member-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      color: var(--white);
+    }
+    img.member-avatar {
+      object-fit: cover;
+      display: block;
+    }
+    .member-avatar.a1 { background: linear-gradient(135deg, #1a4f99, #2d6bd4); }
+    .member-avatar.a2 { background: linear-gradient(135deg, #d4891a, #f5a623); }
+    .member-avatar.a3 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+    .member-card h4 { font-size: 1rem; font-weight: 700; color: var(--primary-dark); }
+    .member-card .role { font-size: 0.82rem; color: var(--text-light); margin: 4px 0 12px; }
+    .member-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .mission-grid { grid-template-columns: 1fr; }
+      .member-grid  { grid-template-columns: 1fr; }
+      .company-table th { width: 120px; }
+      .history-timeline::before { left: 80px; }
+      .history-year { min-width: 80px; font-size: 0.9rem; }
+    }
+    @media (max-width: 1024px) {
+      .mission-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">iL</div>
+          <div class="logo-text">
+            <span class="company">株式会社</span>
+            <span class="brand">アイ・<span>ラーニング</span></span>
+          </div>
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="for-students.html">学生の方へ</a></li>
+            <li><a href="jobs.html">求人情報</a></li>
+            <li><a href="for-companies.html">企業の方へ</a></li>
+            <li><a href="about.html" class="active">会社概要</a></li>
+            <li><a href="contact.html" class="nav-cta">無料相談する</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ページヒーロー -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">ホーム</a> &rsaquo; 会社概要</p>
+      <h1>🏫 会社概要</h1>
+      <p>1977年の事業開設以来、教育一筋に歩んできた私たちのすべて。</p>
+    </div>
+  </section>
+
+  <!-- ミッション・ビジョン -->
+  <section class="about-section">
+    <div class="container">
+      <h2 class="section-title reveal">私たちの想い</h2>
+      <p class="section-sub reveal"><span></span>アイ・ラーニングが目指す世界<span></span></p>
+
+      <div style="max-width:800px; margin:0 auto; text-align:center;" class="reveal">
+        <h3 style="font-size:1.8rem; font-weight:800; color:var(--primary-dark); margin-bottom:20px; line-height:1.5;">
+          「学ぶ力が、働く力になる」<br>
+          <span style="color:var(--accent);">その架け橋になりたい。</span>
+        </h3>
+        <p style="font-size:1.02rem; color:var(--text-light); line-height:1.9; margin-bottom:20px;">
+          アイ・ラーニングは1977年の事業開設以来、「学ぶことの喜び」を地域の子どもたちに伝えてきました。
+          42年間で5,000名以上の卒業生が社会へ旅立ちましたが、彼らのその後—就職・キャリア—についても
+          もっと力になりたいという思いが、このキャリア支援事業の原点です。
+        </p>
+        <p style="font-size:1.02rem; color:var(--text-light); line-height:1.9;">
+          塾講師として生徒と向き合い続けてきた私たちには、一人ひとりの学習スタイル・強み・伸びしろが見えています。
+          その深い理解を、就職支援というフィールドでも活かすことで、学生と企業の双方にとって
+          本当の価値を創出したいと考えています。
+        </p>
+      </div>
+
+      <div class="mission-grid">
+        <div class="mission-card reveal">
+          <div class="m-icon">🎯</div>
+          <h3>ミッション</h3>
+          <p>学習を通じて育まれた力を社会で輝かせる。すべての学生が自分らしいキャリアをスタートできる世界を作る。</p>
+        </div>
+        <div class="mission-card reveal">
+          <div class="m-icon">🌟</div>
+          <h3>ビジョン</h3>
+          <p>教育と雇用の橋渡し役として、学生・企業・社会の三者がともに成長できるエコシステムを構築する。</p>
+        </div>
+        <div class="mission-card reveal">
+          <div class="m-icon">💎</div>
+          <h3>バリュー</h3>
+          <p>一人ひとりの個性を尊重し、誠実に・丁寧に・粘り強く、すべての関係者と向き合い続ける。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 会社概要テーブル -->
+  <section class="about-section" id="info">
+    <div class="container">
+      <h2 class="section-title reveal">会社概要</h2>
+      <p class="section-sub reveal"><span></span>株式会社アイ・ラーニングについて<span></span></p>
+
+      <div class="reveal" style="max-width:900px; margin:0 auto;">
+        <table class="company-table">
+          <tbody>
+            <tr>
+              <th>会社名</th>
+              <td>株式会社アイ・ラーニング（I-Learning Co., Ltd.）</td>
+            </tr>
+            <tr>
+              <th>設立</th>
+              <td>1984年（昭和59年）／2002年 株式会社アイ・ラーニングに改称</td>
+            </tr>
+            <tr>
+              <th>代表取締役</th>
+              <td>代表取締役社長 加納 滋徳</td>
+            </tr>
+            <tr>
+              <th>本社所在地</th>
+              <td>〒901-2133 沖縄県浦添市城間1-2-1</td>
+            </tr>
+            <tr>
+              <th>事業内容</th>
+              <td>
+                ① 学習塾の運営・教育サービスの提供<br>
+                ② 人材紹介・就職支援サービス<br>
+                ③ インターンシップ・採用イベントの企画・運営<br>
+                ④ キャリアカウンセリング事業
+              </td>
+            </tr>
+            <tr>
+              <th>資本金</th>
+              <td>2,000万円</td>
+            </tr>
+            <tr>
+              <th>従業員数</th>
+              <td>150名（業務委託含む）</td>
+            </tr>
+            <tr>
+              <th>許認可</th>
+              <td>有料職業紹介事業許可番号 47-ユ-300360</td>
+            </tr>
+            <tr>
+              <th>Tel</th>
+              <td>098-878-4119</td>
+            </tr>
+            <tr>
+              <th>受付時間</th>
+              <td>平日 10:00〜18:00（土日祝定休）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 沿革 -->
+  <section class="about-section" id="history">
+    <div class="container">
+      <h2 class="section-title reveal">沿革</h2>
+      <p class="section-sub reveal"><span></span>42年間の歩み<span></span></p>
+
+      <div class="history-timeline reveal">
+        <div class="history-item">
+          <div class="history-year">1977</div>
+          <div class="history-dot"></div>
+          <div class="history-desc"><strong>学習塾事業開設 TRIPLE-I。</strong></div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">1984</div>
+          <div class="history-dot"></div>
+          <div class="history-desc"><strong>有限会社トリプル・アイ教育研究所 設立。</strong></div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">1992</div>
+          <div class="history-dot"></div>
+          <div class="history-desc">大学受験予備校 <strong>Yozemi Preparatory School 開校。</strong></div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">2002</div>
+          <div class="history-dot"></div>
+          <div class="history-desc">称号変更により<strong>株式会社アイ・ラーニング</strong>に。</div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">2012</div>
+          <div class="history-dot"></div>
+          <div class="history-desc"><strong>一般社団法人 教育振興会 設立。</strong></div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">2014</div>
+          <div class="history-dot"></div>
+          <div class="history-desc"><strong>ベトナムハノイ日本語教育中心 設立。</strong>顧問語学校開設。沖縄 日本語トレーニングセンター開設。</div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">2017</div>
+          <div class="history-dot"></div>
+          <div class="history-desc"><strong>株式会社フレンドリーアジア 設立。</strong>埼玉三郷アイ日本語スクール開設。</div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">2018</div>
+          <div class="history-dot"></div>
+          <div class="history-desc"><strong>株式会社アイキッズ 設立。</strong></div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">2019</div>
+          <div class="history-dot"></div>
+          <div class="history-desc">台湾大学進学スクール <strong>縁デバー 開設。</strong>カンボジアヒューマンパワー日本語中心 校長就任。台湾 台南應用科技大學 名誉教授就任。</div>
+        </div>
+        <div class="history-item">
+          <div class="history-year">2024</div>
+          <div class="history-dot"></div>
+          <div class="history-desc"><strong>キャリア支援部門を正式に設立。</strong>有料職業紹介事業の許可を取得。学生・企業向け人材紹介サービス本格開始。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- スタッフ紹介 -->
+  <section class="about-section">
+    <div class="container">
+      <h2 class="section-title reveal">キャリア支援チーム</h2>
+      <p class="section-sub reveal"><span></span>あなたの就活・採用を支えるプロフェッショナル<span></span></p>
+
+      <div class="member-grid">
+        <div class="member-card reveal">
+          <img src="../sozai/代表・加納氏.png" alt="加納 滋徳" class="member-avatar">
+          <h4>加納 滋徳</h4>
+          <div class="role">キャリア支援部門 代表 / 代表取締役</div>
+          <p>４畳半１間の学習塾から始め、現在は教育一筋で系列7社の代表となりました。起業後にアメリカ留学しMBA取得した経歴から人と企業を見る目には自信あり。</p>
+        </div>
+        <div class="member-card reveal">
+          <img src="../sozai/副代表・中村氏.png" alt="企業リレーション担当" class="member-avatar">
+          <h4>〇〇 〇〇</h4>
+          <div class="role">企業リレーション担当 / 採用コンサルタント</div>
+          <p>大手人材会社出身。200社以上の採用支援実績。企業側のご要望を深く理解したマッチングが強み。</p>
+        </div>
+        <div class="member-card reveal">
+          <img src="../sozai/カウンセラー・林氏.png" alt="就活コーチ" class="member-avatar">
+          <h4>〇〇 〇〇</h4>
+          <div class="role">就活コーチ / ES・面接指導担当</div>
+          <p>元塾講師・教育心理士。「わかりやすく伝える力」を就活にそのまま応用した独自指導法が好評。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">アイ・ラーニングの<br>キャリア支援を<br>体験してみませんか？</h2>
+      <p class="reveal">まずは無料相談から。どんな小さな疑問でもお気軽にどうぞ。</p>
+      <div class="cta-buttons reveal">
+        <a href="contact.html" class="btn btn-primary">無料相談を申し込む →</a>
+        <a href="../index.html" class="btn btn-secondary">トップページへ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <div class="logo-icon">iL</div>
+            <div class="logo-text">
+              <span class="company">株式会社</span>
+              <span class="brand" style="color:#fff">アイ・ラーニング</span>
+            </div>
+          </a>
+          <p class="footer-desc">42年の教育実績を活かした人材紹介・就職支援。<br>学生と企業を、最高の形でつなぎます。</p>
+          <address class="footer-address">〒901-2133 沖縄県浦添市城間1-2-1<br>TEL: 098-878-4119</address>
+        </div>
+        <div class="footer-col">
+          <h4>学生の方へ</h4>
+          <a href="for-students.html">就職支援サービス</a>
+          <a href="for-students.html#internship">インターンシップ</a>
+        </div>
+        <div class="footer-col">
+          <h4>企業の方へ</h4>
+          <a href="for-companies.html">採用支援サービス</a>
+        </div>
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <a href="about.html">会社概要</a>
+          <a href="about.html#history">沿革</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 株式会社アイ・ラーニング. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

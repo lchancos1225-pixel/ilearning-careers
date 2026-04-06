@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="企業の採用担当者向け。アイ・ラーニングが学習塾育ちの優秀な人材を紹介します。新卒採用・インターン受入・採用イベントのご相談はこちら。">
+  <title>企業の方へ | アイ・ラーニング キャリア支援</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .merit-section { padding: 100px 0; background: var(--white); }
+    .merit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .merit-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .merit-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .merit-num {
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--primary); line-height: 1; margin-bottom: 12px;
+    }
+    .merit-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
+    .merit-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+
+    .plan-section { padding: 100px 0; background: var(--bg); }
+    .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .plan-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      text-align: center;
+      position: relative;
+      transition: var(--transition);
+    }
+    .plan-card.featured {
+      border-color: var(--primary);
+      transform: scale(1.03);
+      box-shadow: var(--shadow-lg);
+    }
+    .plan-card.featured::before {
+      content: "人気No.1";
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 50px;
+    }
+    .plan-tag {
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--primary); background: rgba(26,79,153,0.1);
+      padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 12px;
+    }
+    .plan-card h3 { font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 8px; }
+    .plan-card .price {
+      font-size: 1.1rem; font-weight: 700; color: var(--accent);
+      margin: 16px 0; padding: 12px; background: rgba(245,166,35,0.1); border-radius: var(--radius-sm);
+    }
+    .plan-card p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 20px; line-height: 1.7; }
+    .plan-features { text-align: left; margin-bottom: 28px; }
+    .plan-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      display: flex; gap: 8px; align-items: center;
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-features li::before { content: "✓"; color: var(--success); font-weight: 700; }
+
+    .voice2-section { padding: 100px 0; background: var(--white); }
+    .voice2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .voice2-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .voice2-header { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
+    .voice2-logo {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--primary), #2d6bd4);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.6rem;
+    }
+    .voice2-header .company { font-weight: 700; color: var(--primary-dark); }
+    .voice2-header .person { font-size: 0.82rem; color: var(--text-light); }
+    .voice2-card blockquote { font-size: 0.92rem; color: var(--text); line-height: 1.78; border-left: 3px solid var(--accent); padding-left: 16px; }
+
+    @media (max-width: 768px) {
+      .merit-grid  { grid-template-columns: 1fr; }
+      .plan-grid   { grid-template-columns: 1fr; }
+      .plan-card.featured { transform: none; }
+      .voice2-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 1024px) {
+      .merit-grid  { grid-template-columns: repeat(2, 1fr); }
+      .plan-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">iL</div>
+          <div class="logo-text">
+            <span class="company">株式会社</span>
+            <span class="brand">アイ・<span>ラーニング</span></span>
+          </div>
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="for-students.html">学生の方へ</a></li>
+            <li><a href="jobs.html">求人情報</a></li>
+            <li><a href="for-companies.html" class="active">企業の方へ</a></li>
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="contact.html" class="nav-cta">採用相談する</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ページヒーロー -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">ホーム</a> &rsaquo; 企業の方へ</p>
+      <h1>🏢 企業・採用担当者の方へ</h1>
+      <p>42年間培ってきた教育者の視点で、貴社に本当にマッチする人材をご紹介します。</p>
+    </div>
+  </section>
+
+  <!-- 数字で見るアイ・ラーニング -->
+  <section class="achievement-bar">
+    <div class="container">
+      <div class="achievement-inner">
+        <div class="achievement-item">
+          <span class="icon">👨‍🎓</span>
+          <div class="text"><strong>5,000名+</strong><span>年間登録学生数</span></div>
+        </div>
+        <div class="achievement-divider"></div>
+        <div class="achievement-item">
+          <span class="icon">🏢</span>
+          <div class="text"><strong>200社+</strong><span>パートナー企業数</span></div>
+        </div>
+        <div class="achievement-divider"></div>
+        <div class="achievement-item">
+          <span class="icon">⏱</span>
+          <div class="text"><strong>平均30日</strong><span>紹介〜採用決定まで</span></div>
+        </div>
+        <div class="achievement-divider"></div>
+        <div class="achievement-item">
+          <span class="icon">📈</span>
+          <div class="text"><strong>92%</strong><span>企業様の継続利用率</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アイ・ラーニング採用を選ぶメリット -->
+  <section class="merit-section" id="recruit">
+    <div class="container">
+      <h2 class="section-title reveal">アイ・ラーニングを<br>選ぶ理由</h2>
+      <p class="section-sub reveal"><span></span>教育のプロが送り出す人材だから違う<span></span></p>
+
+      <div class="merit-grid">
+        <div class="merit-card reveal">
+          <div class="merit-num">42年</div>
+          <h3>確かな教育背景</h3>
+          <p>42年間の学習塾運営で培われた教育哲学。忍耐力・継続力・向上心を持つ人材を輩出し続けています。</p>
+        </div>
+        <div class="merit-card reveal">
+          <div class="merit-num">深い理解</div>
+          <h3>一人ひとりを把握</h3>
+          <p>在学中から関わってきたOB・OGは人となりを深く理解。スキル以外の適性・価値観もご説明できます。</p>
+        </div>
+        <div class="merit-card reveal">
+          <div class="merit-num">無駄ゼロ</div>
+          <h3>ミスマッチを防ぐ</h3>
+          <p>事前のカウンセリングと厳選マッチングにより、早期離職リスクを最小限に抑えます。</p>
+        </div>
+        <div class="merit-card reveal">
+          <div class="merit-num">迅速対応</div>
+          <h3>スピーディーな紹介</h3>
+          <p>ご要望ヒアリングから最初の候補者ご提案まで、平均5営業日以内を目標に対応しています。</p>
+        </div>
+        <div class="merit-card reveal">
+          <div class="merit-num">多様な</div>
+          <h3>人材プールの多様性</h3>
+          <p>文系・理系・専門職系など幅広い学生が登録。業種や職種を問わず候補者をご提案できます。</p>
+        </div>
+        <div class="merit-card reveal">
+          <div class="merit-num">アフター</div>
+          <h3>入社後フォロー</h3>
+          <p>採用後も定着支援やオンボーディング相談に対応。長期的な採用成功を一緒に追求します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- サービス・料金プラン -->
+  <section class="plan-section">
+    <div class="container">
+      <h2 class="section-title reveal">採用支援プラン</h2>
+      <p class="section-sub reveal"><span></span>企業規模・採用目標に合わせてお選びいただけます<span></span></p>
+
+      <div class="plan-grid">
+        <div class="plan-card reveal">
+          <span class="plan-tag">スポット採用向け</span>
+          <h3>スタンダードプラン</h3>
+          <div class="price">成功報酬型</div>
+          <p>採用が決まった場合のみ費用が発生する安心プラン。採用活動のリスクを最小化します。</p>
+          <ul class="plan-features">
+            <li>候補者ご紹介（無制限）</li>
+            <li>書類選考代行</li>
+            <li>面接日程調整</li>
+            <li>入社前オリエンテーション</li>
+            <li>採用後1ヶ月フォロー</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="width:100%; justify-content:center;">相談する →</a>
+        </div>
+
+        <div class="plan-card featured reveal">
+          <span class="plan-tag">採用強化向け</span>
+          <h3>プレミアムプラン</h3>
+          <div class="price">月額 + 成功報酬型</div>
+          <p>定期的・継続的に優秀な人材を確保したい企業様向けの総合採用支援パッケージ。</p>
+          <ul class="plan-features">
+            <li>スタンダードの全サービス</li>
+            <li>専任担当者によるサポート</li>
+            <li>採用ページ・JD作成支援</li>
+            <li>合同説明会優先出展枠</li>
+            <li>採用後3ヶ月フォロー</li>
+            <li>定期採用レポート提供</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width:100%; justify-content:center;">相談する →</a>
+        </div>
+
+        <div class="plan-card reveal" id="intern">
+          <span class="plan-tag">インターン採用向け</span>
+          <h3>インターンプラン</h3>
+          <div class="price">定額 + 成功報酬型</div>
+          <p>インターン受け入れから本採用転換まで一貫サポート。優秀な学生との早期接点づくりに最適です。</p>
+          <ul class="plan-features">
+            <li>インターン候補者紹介</li>
+            <li>受入れ体制コンサルティング</li>
+            <li>プログラム設計サポート</li>
+            <li>インターン生の評価支援</li>
+            <li>本採用転換サポート</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="width:100%; justify-content:center;">相談する →</a>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin-top:28px; color:var(--text-light); font-size:0.88rem;">
+        ※ 料金の詳細はお問い合わせください。業種・採用人数によってご相談に応じます。
+      </p>
+    </div>
+  </section>
+
+  <!-- ご利用の流れ（企業向け） -->
+  <section class="flow-section" id="flow">
+    <div class="container">
+      <h2 class="section-title reveal">ご利用の流れ</h2>
+      <p class="section-sub reveal"><span></span>お申し込みから採用完了まで<span></span></p>
+
+      <div class="flow-steps">
+        <div class="flow-step reveal">
+          <div class="flow-step-num">1</div>
+          <h4>採用ヒアリング</h4>
+          <p>求める人物像・職種・条件等を詳しくお伺いします。</p>
+        </div>
+        <div class="flow-step reveal">
+          <div class="flow-step-num">2</div>
+          <h4>求人情報作成</h4>
+          <p>魅力的な求人票・会社紹介資料の作成をサポートします。</p>
+        </div>
+        <div class="flow-step reveal">
+          <div class="flow-step-num">3</div>
+          <h4>候補者紹介</h4>
+          <p>マッチする候補者のレジュメをご提案。随時追加紹介も可能です。</p>
+        </div>
+        <div class="flow-step reveal">
+          <div class="flow-step-num">4</div>
+          <h4>選考・面接</h4>
+          <p>面接調整・選考プロセスの管理を代行します。</p>
+        </div>
+        <div class="flow-step reveal">
+          <div class="flow-step-num">5</div>
+          <h4>採用・入社後フォロー</h4>
+          <p>内定通知から入社後のフォローアップまで完全サポート。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 採用イベント案内 -->
+  <section style="padding:80px 0; background:var(--bg);" id="event">
+    <div class="container">
+      <h2 class="section-title reveal">採用イベントへのご参加</h2>
+      <p class="section-sub reveal"><span></span>学生と直接出会える場をご用意<span></span></p>
+
+      <div class="target-grid">
+        <div class="target-card students reveal" data-icon="🤝">
+          <span class="target-tag">合同企業説明会</span>
+          <h3>複数の学生と<br>効率的に出会う</h3>
+          <p>毎月開催の合同説明会に出展いただけます。自社の魅力を直接PRできる絶好の機会です。</p>
+          <ul class="target-list">
+            <li>月2回以上の定期開催</li>
+            <li>ブース設営・運営サポートあり</li>
+            <li>事前学生マッチングリスト提供</li>
+            <li>オンライン参加にも対応</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary">出展申込みはこちら →</a>
+        </div>
+        <div class="target-card companies reveal" data-icon="🎓">
+          <span class="target-tag">個別・ターゲット採用</span>
+          <h3>特定スキルの<br>学生を狙い撃ち</h3>
+          <p>「理系学生のみ」「特定資格保有者」など、条件を絞りこんだターゲット採用イベントも開催可能です。</p>
+          <ul class="target-list">
+            <li>職種・学部・資格で絞り込み</li>
+            <li>少人数制・深い交流が可能</li>
+            <li>OB・OG交流会の共催も可</li>
+            <li>事前面接・インターンへの誘導</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary">イベント開催を相談する →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 採用企業の声 -->
+  <section class="voice2-section">
+    <div class="container">
+      <h2 class="section-title reveal">採用企業様の声</h2>
+      <p class="section-sub reveal"><span></span>アイ・ラーニングをご利用いただいた企業様から<span></span></p>
+
+      <div class="voice2-grid">
+        <div class="voice2-card reveal">
+          <div class="voice2-header">
+            <div class="voice2-logo">🏭</div>
+            <div>
+              <div class="company">製造業 大手メーカー</div>
+              <div class="person">人事部課長 様</div>
+            </div>
+          </div>
+          <blockquote>
+            紹介いただいた学生は、学習塾で鍛えられてきただけあって課題への粘り強さが際立ちます。
+            「わからなければ調べる・質問する」という姿勢が身についており、配属後の成長スピードが他の新卒と比べて明らかに速いです。
+            3年連続でお世話になっています。
+          </blockquote>
+        </div>
+        <div class="voice2-card reveal">
+          <div class="voice2-header">
+            <div class="voice2-logo">💻</div>
+            <div>
+              <div class="company">IT・SaaS スタートアップ</div>
+              <div class="person">採用担当 様</div>
+            </div>
+          </div>
+          <blockquote>
+            少数精鋭での採用なので、スキルよりも「学ぶ意欲」を一番重視しています。
+            アイ・ラーニングから紹介される方は皆さんその点が優れていて、弊社のカルチャーにも馴染みやすい。
+            ESや面接前に十分な準備ができているのも、採用側として助かっています。
+          </blockquote>
+        </div>
+        <div class="voice2-card reveal">
+          <div class="voice2-header">
+            <div class="voice2-logo">🏦</div>
+            <div>
+              <div class="company">金融・証券会社</div>
+              <div class="person">HRマネージャー 様</div>
+            </div>
+          </div>
+          <blockquote>
+            インターンシップの受け入れから始め、その後本採用に至った学生が毎年います。
+            在学中からの関係性があるため、入社後のギャップが少ないのが最大のメリット。
+            採用後の定着率も業界平均を大きく上回っており、質の高い採用ができています。
+          </blockquote>
+        </div>
+        <div class="voice2-card reveal">
+          <div class="voice2-header">
+            <div class="voice2-logo">🏥</div>
+            <div>
+              <div class="company">医療・ヘルスケア企業</div>
+              <div class="person">採用責任者 様</div>
+            </div>
+          </div>
+          <blockquote>
+            専門性の高い業界なので人材確保に苦労していましたが、アイ・ラーニングさんに相談してから状況が改善しました。
+            学生一人ひとりの特性をきちんと把握して紹介してくださるので、面接の場でも話が深まりやすいです。
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">採用のご相談、<br>いつでもお待ちしています</h2>
+      <p class="reveal">どんな小さなご質問でも構いません。まずはお気軽にご連絡ください。</p>
+      <div class="cta-buttons reveal">
+        <a href="contact.html" class="btn btn-primary">採用相談を申し込む →</a>
+        <a href="for-students.html" class="btn btn-secondary">学生向けページを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <div class="logo-icon">iL</div>
+            <div class="logo-text">
+              <span class="company">株式会社</span>
+              <span class="brand" style="color:#fff">アイ・ラーニング</span>
+            </div>
+          </a>
+          <p class="footer-desc">42年の教育実績を活かした人材紹介・就職支援。<br>学生と企業を、最高の形でつなぎます。</p>
+          <address class="footer-address">〒901-2133 沖縄県浦添市城間1-2-1<br>TEL: 098-878-4119<br>受付時間: 平日 10:00〜18:00</address>
+        </div>
+        <div class="footer-col">
+          <h4>学生の方へ</h4>
+          <a href="for-students.html">就職支援サービス</a>
+          <a href="for-students.html#internship">インターンシップ</a>
+          <a href="for-students.html#resume">ES・レジュメ添削</a>
+        </div>
+        <div class="footer-col">
+          <h4>企業の方へ</h4>
+          <a href="for-companies.html">採用支援サービス</a>
+          <a href="for-companies.html#intern">インターン受入</a>
+          <a href="for-companies.html#event">採用イベント</a>
+        </div>
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <a href="about.html">会社概要</a>
+          <a href="contact.html">お問い合わせ</a>
+          <a href="#">プライバシーポリシー</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 株式会社アイ・ラーニング. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

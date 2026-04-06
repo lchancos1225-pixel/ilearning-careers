@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="アイ・ラーニングへの企業登録・求人掲載フォーム。新卒採用・中途採用・インターンシップの求人を無料で掲載できます。">
+  <title>企業登録・求人掲載 | アイ・ラーニング キャリア支援</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ===== ステッパー ===== */
+    .stepper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 52px;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--text-light);
+      font-weight: 800; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .step.active .step-num   { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .step.done .step-num     { background: var(--success); border-color: var(--success); color: #fff; }
+    .step-label {
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--text-light); white-space: nowrap;
+    }
+    .step.active .step-label { color: var(--primary); }
+    .step.done .step-label   { color: var(--success); }
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      min-width: 60px; max-width: 120px;
+      margin-bottom: 22px;
+      transition: var(--transition);
+    }
+    .step-line.done { background: var(--success); }
+
+    /* ===== フォームパネル ===== */
+    .register-section { padding: 80px 0 100px; }
+    .register-inner { max-width: 860px; margin: 0 auto; }
+
+    .form-panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 44px 48px;
+      box-shadow: var(--shadow);
+    }
+    .form-panel-title {
+      font-size: 1.25rem; font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .form-panel-title .step-badge {
+      background: var(--primary); color: #fff;
+      font-size: 0.78rem; padding: 3px 10px;
+      border-radius: 50px;
+    }
+
+    /* フォーム共通 */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+    .form-group label .req { color: #e74c3c; margin-left: 4px; font-size: 0.75rem; }
+    .form-group label .opt { color: var(--text-light); margin-left: 4px; font-size: 0.75rem; font-weight:400; }
+    .form-control {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-size: 0.95rem; font-family: inherit; color: var(--text);
+      background: var(--bg); transition: var(--transition); outline: none;
+    }
+    .form-control:focus {
+      border-color: var(--primary); background: var(--white);
+      box-shadow: 0 0 0 3px rgba(26,79,153,0.1);
+    }
+    textarea.form-control { resize: vertical; min-height: 110px; }
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px;
+    }
+
+    /* 雇用形態チェックボックス */
+    .employment-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .employment-label {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border: 2px solid var(--border);
+      border-radius: var(--radius-sm); cursor: pointer;
+      font-size: 0.9rem; font-weight: 700;
+      background: var(--bg); color: var(--text);
+      transition: var(--transition);
+    }
+    .employment-label input { display: none; }
+    .employment-label .e-icon { font-size: 1.2rem; }
+    .employment-label:has(input:checked) {
+      border-color: var(--primary); background: rgba(26,79,153,0.08); color: var(--primary);
+    }
+    .employment-label:hover { border-color: var(--primary); }
+
+    /* 応募要件タグ入力 */
+    .tag-input-area {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      padding: 10px 12px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); background: var(--bg); min-height: 48px;
+      cursor: text;
+    }
+    .tag-input-area:focus-within {
+      border-color: var(--primary); background: var(--white);
+      box-shadow: 0 0 0 3px rgba(26,79,153,0.1);
+    }
+    .tag-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(26,79,153,0.1); color: var(--primary);
+      padding: 4px 10px; border-radius: 50px; font-size: 0.82rem; font-weight: 700;
+    }
+    .tag-chip button {
+      background: none; border: none; cursor: pointer;
+      color: var(--primary); font-size: 0.9rem; line-height: 1; padding: 0;
+    }
+    .tag-input-area input {
+      border: none; outline: none; background: transparent;
+      font-size: 0.9rem; font-family: inherit; min-width: 120px; flex: 1;
+    }
+
+    /* ナビボタン */
+    .form-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border);
+    }
+
+    /* 確認画面 */
+    .confirm-section { display: none; }
+    .confirm-block { margin-bottom: 28px; }
+    .confirm-block h4 {
+      font-size: 0.9rem; font-weight: 800; color: var(--primary-dark);
+      margin-bottom: 12px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .confirm-row {
+      display: grid; grid-template-columns: 180px 1fr;
+      gap: 8px; padding: 10px 0; border-bottom: 1px solid #f0f2f7;
+      font-size: 0.9rem;
+    }
+    .confirm-row:last-child { border-bottom: none; }
+    .confirm-row .c-label { color: var(--text-light); font-weight: 600; }
+    .confirm-row .c-val { color: var(--text); }
+
+    /* 完了メッセージ */
+    .success-panel {
+      display: none; text-align: center;
+      padding: 64px 32px; background: var(--white);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .success-panel .check-icon { font-size: 3.5rem; margin-bottom: 20px; }
+    .success-panel h3 { font-size: 1.5rem; font-weight: 800; color: var(--success); margin-bottom: 12px; }
+    .success-panel p { color: var(--text-light); line-height: 1.8; margin-bottom: 28px; }
+
+    /* 利点バー */
+    .merits-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; margin-bottom: 52px;
+    }
+    .merit-pill {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 20px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .merit-pill .m-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .merit-pill h4 { font-size: 0.9rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+    .merit-pill p  { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .form-panel { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .merits-bar { grid-template-columns: 1fr; }
+      .confirm-row { grid-template-columns: 1fr; }
+      .confirm-row .c-label { color: var(--primary-dark); font-size: 0.8rem; }
+      .step-line { min-width: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">iL</div>
+          <div class="logo-text">
+            <span class="company">株式会社</span>
+            <span class="brand">アイ・<span>ラーニング</span></span>
+          </div>
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="for-students.html">学生の方へ</a></li>
+            <li><a href="jobs.html">求人情報</a></li>
+            <li><a href="for-companies.html" class="active">企業の方へ</a></li>
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="contact.html" class="nav-cta">無料相談する</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ページヒーロー -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">ホーム</a> &rsaquo; <a href="for-companies.html">企業の方へ</a> &rsaquo; 企業登録・求人掲載</p>
+      <h1>🏢 企業登録・求人掲載</h1>
+      <p>簡単3ステップで求人掲載が完了。学習意欲の高い優秀な学生・求職者へアプローチできます。</p>
+    </div>
+  </section>
+
+  <section class="register-section">
+    <div class="container">
+      <div class="register-inner">
+
+        <!-- 利点バー -->
+        <div class="merits-bar reveal">
+          <div class="merit-pill">
+            <div class="m-icon">🆓</div>
+            <div>
+              <h4>初期掲載無料</h4>
+              <p>まずは無料でご登録・掲載いただけます。採用成功時のみ成功報酬が発生します。</p>
+            </div>
+          </div>
+          <div class="merit-pill">
+            <div class="m-icon">⚡</div>
+            <div>
+              <h4>最短2営業日で掲載</h4>
+              <p>登録後、担当者が内容を確認し最短2営業日以内に求人を公開します。</p>
+            </div>
+          </div>
+          <div class="merit-pill">
+            <div class="m-icon">🎯</div>
+            <div>
+              <h4>新卒・中途・インターン対応</h4>
+              <p>雇用形態を選んで一括掲載。複数の採用ニーズをまとめて登録できます。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ステッパー -->
+        <div class="stepper" id="stepper">
+          <div class="step active" id="step1">
+            <div class="step-num">1</div>
+            <div class="step-label">企業基本情報</div>
+          </div>
+          <div class="step-line" id="line1"></div>
+          <div class="step" id="step2">
+            <div class="step-num">2</div>
+            <div class="step-label">求人情報登録</div>
+          </div>
+          <div class="step-line" id="line2"></div>
+          <div class="step" id="step3">
+            <div class="step-num">3</div>
+            <div class="step-label">確認・送信</div>
+          </div>
+        </div>
+
+        <!-- ===== STEP 1: 企業基本情報 ===== -->
+        <div class="form-panel" id="panel1">
+          <div class="form-panel-title">
+            <span class="step-badge">STEP 1</span>
+            企業基本情報
+          </div>
+          <form id="form1" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label>会社名<span class="req">必須</span></label>
+                <input type="text" name="company_name" class="form-control" placeholder="株式会社〇〇" required autocomplete="organization">
+              </div>
+              <div class="form-group">
+                <label>会社名（フリガナ）<span class="req">必須</span></label>
+                <input type="text" name="company_kana" class="form-control" placeholder="カブシキガイシャ〇〇" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>業種<span class="req">必須</span></label>
+                <select name="industry" class="form-control" required>
+                  <option value="">お選びください</option>
+                  <option>IT・テクノロジー</option>
+                  <option>金融・保険・証券</option>
+                  <option>医療・ヘルスケア</option>
+                  <option>食品・飲料・農業</option>
+                  <option>コンサルティング</option>
+                  <option>商社・貿易・物流</option>
+                  <option>クリエイティブ・広告</option>
+                  <option>観光・ホテル・サービス</option>
+                  <option>製造・メーカー</option>
+                  <option>教育・研究</option>
+                  <option>不動産・建設</option>
+                  <option>その他</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>従業員数<span class="req">必須</span></label>
+                <select name="employee_count" class="form-control" required>
+                  <option value="">お選びください</option>
+                  <option>1〜10名</option>
+                  <option>11〜50名</option>
+                  <option>51〜100名</option>
+                  <option>101〜300名</option>
+                  <option>301〜1000名</option>
+                  <option>1001名以上</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>事業内容<span class="req">必須</span></label>
+              <textarea name="business" class="form-control" placeholder="事業内容・サービスを簡潔にご記載ください（200文字程度）" required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>本社所在地<span class="req">必須</span></label>
+                <input type="text" name="address" class="form-control" placeholder="〒000-0000　都道府県市区町村〇〇" required>
+              </div>
+              <div class="form-group">
+                <label>会社ウェブサイト<span class="opt">任意</span></label>
+                <input type="url" name="website" class="form-control" placeholder="https://example.co.jp">
+              </div>
+            </div>
+
+            <div class="form-panel-title" style="margin-top:12px;">
+              採用担当者情報
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>担当者名<span class="req">必須</span></label>
+                <input type="text" name="contact_name" class="form-control" placeholder="山田 太郎" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label>役職<span class="opt">任意</span></label>
+                <input type="text" name="contact_title" class="form-control" placeholder="人事部 採用担当">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>電話番号<span class="req">必須</span></label>
+                <input type="tel" name="contact_tel" class="form-control" placeholder="098-XXX-XXXX" required autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label>连絡可能な時間帯<span class="opt">任意</span></label>
+                <input type="text" name="contact_hours" class="form-control" placeholder="平日 9:00〜18:00">
+              </div>
+            </div>
+
+            <div class="form-nav">
+              <div></div>
+              <button type="submit" class="btn btn-primary">求人情報の入力へ →</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ===== STEP 2: 求人情報 ===== -->
+        <div class="form-panel" id="panel2" style="display:none;">
+          <div class="form-panel-title">
+            <span class="step-badge">STEP 2</span>
+            求人情報登録
+          </div>
+          <form id="form2" novalidate>
+
+            <div class="form-group">
+              <label>雇用形態<span class="req">必須</span>（複数選択可）</label>
+              <div class="employment-group">
+                <label class="employment-label">
+                  <input type="checkbox" name="emp_type" value="新卒採用">
+                  <span class="e-icon">🎓</span> 新卒採用
+                </label>
+                <label class="employment-label">
+                  <input type="checkbox" name="emp_type" value="中途採用">
+                  <span class="e-icon">💼</span> 中途採用
+                </label>
+                <label class="employment-label">
+                  <input type="checkbox" name="emp_type" value="インターンシップ">
+                  <span class="e-icon">🌱</span> インターンシップ
+                </label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>職種・ポジション名<span class="req">必須</span></label>
+                <input type="text" name="position" class="form-control" placeholder="例: Webエンジニア、営業職（総合職）" required>
+              </div>
+              <div class="form-group">
+                <label>募集人数<span class="req">必須</span></label>
+                <select name="recruit_count" class="form-control" required>
+                  <option value="">お選びください</option>
+                  <option>1名</option>
+                  <option>2〜3名</option>
+                  <option>4〜5名</option>
+                  <option>6〜10名</option>
+                  <option>10名以上</option>
+                  <option>若干名</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>勤務地<span class="req">必須</span></label>
+                <input type="text" name="work_location" class="form-control" placeholder="例: 沖縄県浦添市（リモート可）" required>
+              </div>
+              <div class="form-group">
+                <label>勤務時間<span class="opt">任意</span></label>
+                <input type="text" name="work_hours" class="form-control" placeholder="例: 9:00〜18:00（フレックスあり）">
+              </div>
+            </div>
+
+            <!-- 給与（新卒・中途で分けて入力） -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>給与（新卒）<span class="opt">任意</span></label>
+                <input type="text" name="salary_new" class="form-control" placeholder="例: 月給 22万円〜（諸手当別途）">
+              </div>
+              <div class="form-group">
+                <label>給与（中途・インターン）<span class="opt">任意</span></label>
+                <input type="text" name="salary_mid" class="form-control" placeholder="例: 年収 400〜600万円 / 時給 1,200円〜">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>仕事内容<span class="req">必須</span></label>
+              <textarea name="job_desc" class="form-control" style="min-height:140px;" placeholder="担当していただく業務の詳細を具体的にご記載ください。入社後のキャリアパスがあれば合わせてご記載いただくと効果的です。" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>必須スキル・応募資格<span class="req">必須</span></label>
+              <textarea name="requirements" class="form-control" placeholder="例: ・大学卒業以上（学部不問）&#10;・コミュニケーション能力のある方&#10;・基本的なPCスキル" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>歓迎スキル・経験<span class="opt">任意</span></label>
+              <textarea name="preferred" class="form-control" placeholder="例: ・営業経験1年以上&#10;・英語でのコミュニケーション経験&#10;・SFAツール使用経験"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>待遇・福利厚生<span class="opt">任意</span></label>
+              <textarea name="benefits" class="form-control" placeholder="例: 各種社会保険完備、交通費全額支給、年間休日120日、リモートワーク可、資格取得支援制度"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>選考プロセス<span class="opt">任意</span></label>
+              <input type="text" name="selection" class="form-control" placeholder="例: 書類審査 → 一次面接 → 最終面接 → 内定（約2〜3週間）">
+            </div>
+
+            <!-- キーワードタグ -->
+            <div class="form-group">
+              <label>アピールポイント・タグ<span class="opt">任意</span>
+                <span style="font-size:0.75rem;font-weight:400;color:var(--text-light);">（Enterキーで追加・×で削除）</span>
+              </label>
+              <div class="tag-input-area" id="tagArea">
+                <input type="text" id="tagInput" placeholder="リモート可、未経験OK など">
+              </div>
+              <input type="hidden" name="tags" id="tagsHidden">
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-outline" onclick="goStep(1)">← 企業情報に戻る</button>
+              <button type="submit" class="btn btn-primary">入力内容を確認する →</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ===== STEP 3: 確認画面 ===== -->
+        <div class="form-panel confirm-section" id="panel3">
+          <div class="form-panel-title">
+            <span class="step-badge">STEP 3</span>
+            入力内容の確認
+          </div>
+          <div id="confirmContent"></div>
+
+          <div style="background:rgba(26,79,153,0.06);border:1px solid rgba(26,79,153,0.15);border-radius:8px;padding:16px 20px;margin:24px 0;">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.88rem;color:var(--text);">
+              <input type="checkbox" id="confirmAgree" style="margin-top:3px;accent-color:var(--primary);flex-shrink:0;">
+              <span><a href="#" style="color:var(--primary);text-decoration:underline;">利用規約</a>および<a href="#" style="color:var(--primary);text-decoration:underline;">プライバシーポリシー</a>に同意します。登録いただいた企業情報は採用支援サービスのご提供にのみ使用いたします。</span>
+            </label>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn-outline" onclick="goStep(2)">← 求人情報に戻る</button>
+            <button type="button" class="btn btn-primary" onclick="submitRegister()">📩 登録を申し込む</button>
+          </div>
+        </div>
+
+        <!-- ===== 完了 ===== -->
+        <div class="success-panel" id="successPanel">
+          <div class="check-icon">🎉</div>
+          <h3>登録申し込みが完了しました！</h3>
+          <p>
+            ご登録ありがとうございます。<br>
+            担当者が内容を確認し、<strong>2営業日以内</strong>にご連絡いたします。<br>
+            お急ぎの場合は <strong>098-878-4119</strong>（平日 10:00〜18:00）へお電話ください。
+          </p>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <a href="jobs.html" class="btn btn-primary">求人一覧を見る</a>
+            <a href="for-companies.html" class="btn btn-outline">企業向けページへ戻る</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <div class="logo-icon">iL</div>
+            <div class="logo-text">
+              <span class="company">株式会社</span>
+              <span class="brand" style="color:#fff">アイ・ラーニング</span>
+            </div>
+          </a>
+          <p class="footer-desc">42年の教育実績を活かした人材紹介・就職支援。<br>学生と企業を、最高の形でつなぎます。</p>
+          <address class="footer-address">〒901-2133 沖縄県浦添市城間1-2-1<br>TEL: 098-878-4119<br>受付時間: 平日 10:00〜18:00</address>
+        </div>
+        <div class="footer-col">
+          <h4>学生の方へ</h4>
+          <a href="for-students.html">就職支援サービス</a>
+          <a href="jobs.html">求人情報</a>
+        </div>
+        <div class="footer-col">
+          <h4>企業の方へ</h4>
+          <a href="for-companies.html">採用支援サービス</a>
+          <a href="company-register.html">企業登録・求人掲載</a>
+        </div>
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <a href="about.html">会社概要</a>
+          <a href="contact.html">お問い合わせ</a>
+          <a href="#">プライバシーポリシー</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 株式会社アイ・ラーニング. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // ===== ステッパー制御 =====
+    function goStep(n) {
+      [1,2,3].forEach(i => {
+        const s = document.getElementById('step'+i);
+        s.classList.remove('active','done');
+        if (i < n)  s.classList.add('done');
+        if (i === n) s.classList.add('active');
+        document.getElementById('panel'+i).style.display = i === n ? 'block' : 'none';
+        if (i < 3) {
+          const line = document.getElementById('line'+i);
+          line.classList.toggle('done', i < n);
+        }
+      });
+      window.scrollTo({ top: document.querySelector('.register-inner').offsetTop - 100, behavior: 'smooth' });
+    }
+
+    // ===== STEP1 送信 =====
+    document.getElementById('form1').addEventListener('submit', e => {
+      e.preventDefault();
+      if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+      goStep(2);
+    });
+
+    // ===== STEP2 送信 =====
+    document.getElementById('form2').addEventListener('submit', e => {
+      e.preventDefault();
+      const checked = document.querySelectorAll('[name="emp_type"]:checked');
+      if (!checked.length) { alert('雇用形態を1つ以上選択してください。'); return; }
+      if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+      buildConfirm();
+      goStep(3);
+    });
+
+    // ===== 確認画面生成 =====
+    function buildConfirm() {
+      const f1 = document.getElementById('form1');
+      const f2 = document.getElementById('form2');
+      const get = (form, name) => {
+        const el = form.querySelector(`[name="${name}"]`);
+        return el ? el.value : '';
+      };
+      const empTypes = Array.from(document.querySelectorAll('[name="emp_type"]:checked')).map(c => c.value).join('、');
+      const tags = document.getElementById('tagsHidden').value;
+
+      const rows = (data) => data.map(([l,v]) => v ? `<div class="confirm-row"><span class="c-label">${l}</span><span class="c-val">${v.replace(/\n/g,'<br>')}</span></div>` : '').join('');
+
+      document.getElementById('confirmContent').innerHTML = `
+        <div class="confirm-block">
+          <h4>🏢 企業基本情報</h4>
+          ${rows([
+            ['会社名', get(f1,'company_name')],
+            ['業種', get(f1,'industry')],
+            ['従業員数', get(f1,'employee_count')],
+            ['事業内容', get(f1,'business')],
+            ['本社所在地', get(f1,'address')],
+            ['会社ウェブサイト', get(f1,'website')],
+          ])}
+        </div>
+        <div class="confirm-block">
+          <h4>👤 採用担当者情報</h4>
+          ${rows([
+            ['担当者名', get(f1,'contact_name')],
+            ['役職', get(f1,'contact_title')],
+            ['電話番号', get(f1,'contact_tel')],
+            ['連絡可能時間帯', get(f1,'contact_hours')],
+          ])}
+        </div>
+        <div class="confirm-block">
+          <h4>💼 求人情報</h4>
+          ${rows([
+            ['雇用形態', empTypes],
+            ['職種・ポジション', get(f2,'position')],
+            ['募集人数', get(f2,'recruit_count')],
+            ['勤務地', get(f2,'work_location')],
+            ['勤務時間', get(f2,'work_hours')],
+            ['給与（新卒）', get(f2,'salary_new')],
+            ['給与（中途・インターン）', get(f2,'salary_mid')],
+            ['仕事内容', get(f2,'job_desc')],
+            ['必須スキル・応募資格', get(f2,'requirements')],
+            ['歓迎スキル・経験', get(f2,'preferred')],
+            ['待遇・福利厚生', get(f2,'benefits')],
+            ['選考プロセス', get(f2,'selection')],
+            ['アピールタグ', tags],
+          ])}
+        </div>
+      `;
+    }
+
+    // ===== 最終送信 =====
+    function submitRegister() {
+      if (!document.getElementById('confirmAgree').checked) {
+        alert('利用規約・プライバシーポリシーへの同意が必要です。');
+        return;
+      }
+      document.getElementById('panel3').style.display = 'none';
+      document.getElementById('successPanel').style.display = 'block';
+      // ステッパーを完了に
+      [1,2,3].forEach(i => {
+        const s = document.getElementById('step'+i);
+        s.classList.remove('active');
+        s.classList.add('done');
+        s.querySelector('.step-num').textContent = '✓';
+      });
+      [1,2].forEach(i => document.getElementById('line'+i).classList.add('done'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ===== タグ入力 =====
+    const tagInput = document.getElementById('tagInput');
+    const tagArea  = document.getElementById('tagArea');
+    const tagsHidden = document.getElementById('tagsHidden');
+    let tags = [];
+
+    function renderTags() {
+      tagArea.querySelectorAll('.tag-chip').forEach(t => t.remove());
+      tags.forEach((tag, i) => {
+        const chip = document.createElement('span');
+        chip.className = 'tag-chip';
+        chip.innerHTML = `${tag}<button type="button" onclick="removeTag(${i})">×</button>`;
+        tagArea.insertBefore(chip, tagInput);
+      });
+      tagsHidden.value = tags.join('、');
+    }
+
+    tagInput.addEventListener('keydown', e => {
+      if ((e.key === 'Enter' || e.key === ',') && tagInput.value.trim()) {
+        e.preventDefault();
+        tags.push(tagInput.value.trim());
+        tagInput.value = '';
+        renderTags();
+      }
+    });
+
+    function removeTag(i) {
+      tags.splice(i, 1);
+      renderTags();
+    }
+  </script>
+</body>
+</html>

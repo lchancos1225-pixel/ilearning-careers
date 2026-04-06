@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="アイ・ラーニング キャリア支援へのお問い合わせ。学生の就職相談、企業の採用相談、イベント参加申し込みなど、お気軽にご連絡ください。">
+  <title>お問い合わせ | アイ・ラーニング キャリア支援</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .contact-wrapper { padding: 100px 0; }
+    .contact-type-tabs {
+      display: flex; gap: 12px; justify-content: center;
+      margin-bottom: 52px;
+    }
+    .contact-type-tab {
+      padding: 12px 28px;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; background: var(--white); color: var(--text-light);
+      transition: var(--transition);
+    }
+    .contact-type-tab.active,
+    .contact-type-tab:hover {
+      background: var(--primary); border-color: var(--primary); color: var(--white);
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.7fr; gap: 56px; align-items: start; }
+    .contact-sidebar { position: sticky; top: 100px; }
+    .contact-sidebar h2 { font-size: 1.5rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; }
+    .contact-sidebar > p { color: var(--text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 28px; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .contact-item:last-of-type { border-bottom: none; }
+    .contact-item .ci-icon {
+      width: 44px; height: 44px;
+      background: rgba(26,79,153,0.08);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-item .ci-label { font-size: 0.78rem; color: var(--text-light); margin-bottom: 2px; }
+    .contact-item .ci-value { font-size: 0.95rem; font-weight: 600; color: var(--primary-dark); }
+    .note-box {
+      background: rgba(26,79,153,0.06); border: 1px solid rgba(26,79,153,0.15);
+      border-radius: var(--radius-sm); padding: 16px 20px; margin-top: 24px;
+      font-size: 0.85rem; color: var(--text-light); line-height: 1.7;
+    }
+    .note-box strong { color: var(--primary-dark); }
+
+    /* フォーム */
+    .contact-form { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 44px 40px; box-shadow: var(--shadow); }
+    .form-section-title { font-size: 1rem; font-weight: 800; color: var(--primary-dark); margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+    .form-section-title:first-child { margin-top: 0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+    .form-group label .req { color: #e74c3c; margin-left: 4px; font-size: 0.75rem; }
+    .form-group label .opt { color: var(--text-light); margin-left: 4px; font-size: 0.75rem; font-weight: 400; }
+    .form-control {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-size: 0.95rem; font-family: inherit; color: var(--text);
+      background: var(--bg); transition: var(--transition); outline: none;
+    }
+    .form-control:focus { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 3px rgba(26,79,153,0.12); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px;
+    }
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 12px; }
+    .checkbox-label {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.88rem; color: var(--text); cursor: pointer;
+      padding: 8px 14px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); background: var(--bg);
+      transition: var(--transition);
+    }
+    .checkbox-label input { accent-color: var(--primary); }
+    .checkbox-label:has(input:checked) {
+      border-color: var(--primary); background: rgba(26,79,153,0.06); color: var(--primary);
+    }
+    .privacy-check {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.85rem; color: var(--text-light); cursor: pointer; margin-bottom: 24px;
+    }
+    .privacy-check input { accent-color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+    .privacy-check a { color: var(--primary); text-decoration: underline; }
+    .form-submit { text-align: center; }
+    .form-submit .btn { min-width: 240px; justify-content: center; font-size: 1.05rem; padding: 16px 40px; }
+    .form-submit .note { font-size: 0.8rem; color: var(--text-light); margin-top: 12px; }
+
+    /* 完了メッセージ（非表示デフォルト） */
+    .success-msg {
+      display: none; text-align: center;
+      padding: 48px 32px; background: rgba(39,174,96,0.08);
+      border: 1px solid rgba(39,174,96,0.3); border-radius: var(--radius);
+    }
+    .success-msg .check-icon { font-size: 3rem; margin-bottom: 16px; }
+    .success-msg h3 { color: var(--success); font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; }
+    .success-msg p { color: var(--text-light); font-size: 0.92rem; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-sidebar { position: static; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">iL</div>
+          <div class="logo-text">
+            <span class="company">株式会社</span>
+            <span class="brand">アイ・<span>ラーニング</span></span>
+          </div>
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="for-students.html">学生の方へ</a></li>
+            <li><a href="jobs.html">求人情報</a></li>
+            <li><a href="for-companies.html">企業の方へ</a></li>
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="contact.html" class="nav-cta active">無料相談する</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ページヒーロー -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">ホーム</a> &rsaquo; お問い合わせ</p>
+      <h1>📩 お問い合わせ・無料相談</h1>
+      <p>まずはお気軽にご連絡ください。学生の就活相談から企業の採用相談まで、丁寧にお答えします。</p>
+    </div>
+  </section>
+
+  <!-- タブ切り替え -->
+  <section class="contact-wrapper">
+    <div class="container">
+      <div class="contact-type-tabs">
+        <button class="contact-type-tab active" onclick="switchTab('student')">🎓 学生・就活生の方</button>
+        <button class="contact-type-tab" onclick="switchTab('company')">🏢 企業・採用担当者の方</button>
+        <button class="contact-type-tab" onclick="switchTab('other')">📌 その他のお問い合わせ</button>
+      </div>
+
+      <div class="contact-grid">
+        <!-- サイドバー -->
+        <div class="contact-sidebar">
+          <h2>お気軽にご相談ください</h2>
+          <p>お電話またはこちらのフォームよりご連絡ください。初回のご相談はすべて無料です。</p>
+
+          <div class="contact-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">お電話でのご相談</div>
+              <div class="ci-value">098-878-4119</div>
+              <div style="font-size:0.78rem; color:var(--text-light);">平日 10:00〜18:00</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="ci-icon">💻</div>
+            <div>
+              <div class="ci-label">オンライン面談</div>
+              <div class="ci-value">Zoom / Google Meet</div>
+              <div style="font-size:0.78rem; color:var(--text-light);">全国どこからでもOK</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">来社でのご相談</div>
+              <div class="ci-value">沖縄県浦添市城間1-2-1</div>
+              <div style="font-size:0.78rem; color:var(--text-light);">要予約（フォームよりご予約ください）</div>
+            </div>
+          </div>
+
+          <div class="note-box">
+            <strong>📋 返信にかかるお時間の目安</strong><br>
+            フォームは通常1〜2営業日以内にご返信します。お急ぎの方はお電話でのご連絡をおすすめします。
+          </div>
+        </div>
+
+        <!-- フォーム -->
+        <div class="contact-form" id="contactForm">
+          <form id="inquiryForm" novalidate>
+            <p class="form-section-title">お問い合わせ種別</p>
+            <div class="form-group">
+              <div class="checkbox-group" id="inquiryTypeGroup">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="type" value="career_counseling"> キャリアカウンセリング
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="type" value="internship"> インターンシップ相談
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="type" value="resume"> ES・レジュメ添削
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="type" value="interview"> 面接対策
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="type" value="seminar"> 企業説明会参加
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="type" value="recruit"> 採用支援（企業向け）
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="type" value="other"> その他
+                </label>
+              </div>
+            </div>
+
+            <p class="form-section-title">お客様情報</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label>お名前<span class="req">必須</span></label>
+                <input type="text" name="lastname" class="form-control" placeholder="山田" required autocomplete="family-name">
+              </div>
+              <div class="form-group">
+                <label>名<span class="req">必須</span></label>
+                <input type="text" name="firstname" class="form-control" placeholder="太郎" required autocomplete="given-name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>メールアドレス<span class="req">必須</span></label>
+                <input type="email" name="email" class="form-control" placeholder="example@mail.com" required autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label>電話番号<span class="opt">任意</span></label>
+                <input type="tel" name="tel" class="form-control" placeholder="090-XXXX-XXXX" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>ご所属<span class="req">必須</span></label>
+              <select name="affiliation" class="form-control" required>
+                <option value="">お選びください</option>
+                <option value="university">大学生（在学中）</option>
+                <option value="graduate">大学院生（在学中）</option>
+                <option value="vocational">専門学校生（在学中）</option>
+                <option value="ob_og">アイ・ラーニング卒業生（OB/OG）</option>
+                <option value="second_career">第二新卒・転職希望者</option>
+                <option value="company">企業（採用担当）</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="companyFields" style="display:none;">
+              <label>会社名<span class="req">必須</span></label>
+              <input type="text" name="company" class="form-control" placeholder="株式会社〇〇" autocomplete="organization">
+            </div>
+
+            <p class="form-section-title">ご相談内容</p>
+            <div class="form-group">
+              <label>ご希望・ご相談内容<span class="req">必須</span></label>
+              <textarea name="message" class="form-control" placeholder="例: 大学3年生です。就活を始めたばかりで何から始めればいいかわかりません。まずはカウンセリングをお願いしたいです。" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>ご希望の連絡方法<span class="opt">任意</span></label>
+              <select name="contact_method" class="form-control">
+                <option value="">お選びください</option>
+                <option value="phone">電話折返し希望</option>
+                <option value="zoom">Zoom面談希望</option>
+                <option value="visit">来社希望</option>
+              </select>
+            </div>
+
+            <label class="privacy-check">
+              <input type="checkbox" id="privacyCheck" required>
+              <span><a href="#" target="_blank">プライバシーポリシー</a>に同意します。送信いただいた情報は採用支援・就職支援サービスのご提供のみに使用いたします。</span>
+            </label>
+
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary">
+                📩 送信する
+              </button>
+              <p class="note">お送りいただいた内容は暗号化して安全に送信されます</p>
+            </div>
+          </form>
+
+          <!-- 送信完了メッセージ -->
+          <div class="success-msg" id="successMsg">
+            <div class="check-icon">✅</div>
+            <h3>送信が完了しました！</h3>
+            <p>
+              お問い合わせありがとうございます。<br>
+              内容を確認の上、<strong>1〜2営業日以内</strong>にご連絡いたします。<br>
+              お急ぎの場合は <strong>098-878-4119</strong> までお電話ください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <div class="logo-icon">iL</div>
+            <div class="logo-text">
+              <span class="company">株式会社</span>
+              <span class="brand" style="color:#fff">アイ・ラーニング</span>
+            </div>
+          </a>
+          <p class="footer-desc">42年の教育実績を活かした人材紹介・就職支援。<br>学生と企業を、最高の形でつなぎます。</p>
+          <address class="footer-address">〒901-2133 沖縄県浦添市城間1-2-1<br>TEL: 098-878-4119</address>
+        </div>
+        <div class="footer-col">
+          <h4>学生の方へ</h4>
+          <a href="for-students.html">就職支援サービス</a>
+          <a href="for-students.html#internship">インターンシップ</a>
+        </div>
+        <div class="footer-col">
+          <h4>企業の方へ</h4>
+          <a href="for-companies.html">採用支援サービス</a>
+        </div>
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <a href="about.html">会社概要</a>
+          <a href="contact.html">お問い合わせ</a>
+          <a href="#">プライバシーポリシー</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 株式会社アイ・ラーニング. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // タブ切り替え
+    function switchTab(type) {
+      document.querySelectorAll('.contact-type-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      const affiliationSelect = document.querySelector('[name="affiliation"]');
+      if (type === 'company') {
+        affiliationSelect.value = 'company';
+        document.getElementById('companyFields').style.display = 'block';
+      } else if (type === 'student') {
+        affiliationSelect.value = '';
+        document.getElementById('companyFields').style.display = 'none';
+      }
+    }
+
+    // 企業フィールドの表示切り替え
+    document.querySelector('[name="affiliation"]').addEventListener('change', function () {
+      document.getElementById('companyFields').style.display =
+        this.value === 'company' ? 'block' : 'none';
+    });
+
+    // フォーム送信（デモ）
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!document.getElementById('privacyCheck').checked) {
+        alert('プライバシーポリシーへの同意が必要です。');
+        return;
+      }
+      this.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('contactForm').offsetTop - 100, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
