@@ -680,7 +680,7 @@ ul, ol { list-style: none; }
   margin-bottom: 0;
 }
 
-/* 42年の歴史ビジュアル */
+/* 43年の歴史ビジュアル */
 .years-visual {
   background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   border-radius: var(--radius);
