@@ -1272,7 +1272,7 @@ select.form-control {
 @media (max-width: 768px) {
   .hero-inner       { grid-template-columns: 1fr; }
   .hero-visual      { display: none; }
-  .hero-stats       { grid-template-columns: repeat(3, 1fr); }
+  .hero-stats       { display: none; }
   .target-grid      { grid-template-columns: 1fr; }
   .strength-grid    { grid-template-columns: 1fr; }
   .news-grid        { grid-template-columns: 1fr; }
@@ -1336,17 +1336,19 @@ select.form-control {
   
   /* Achievement bar - strict 2x2 grid layout for mobile */
   .achievement-bar {
-    padding: 20px 0;
+    padding: 24px 0;
   }
   
   .achievement-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px 10px;
+    gap: 20px 12px;
     justify-items: center;
     align-items: start;
-    padding: 20px;
+    padding: 16px;
     width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .achievement-item {
@@ -1358,6 +1360,7 @@ select.form-control {
     width: 100%;
     margin: 0;
     padding: 12px 8px;
+    box-sizing: border-box;
   }
   
   .achievement-item .icon {
