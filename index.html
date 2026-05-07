@@ -11,27 +11,46 @@
     body { background: #ffffff !important; }
     
     /* セクション全体の余白設定：上下合わせて76px */
-    .featured-jobs-section {
-      padding-top: 38px !important;
-      padding-bottom: 38px !important;
+    .featured-jobs-section,
+    .services-section,
+    .target-section,
+    .flow-section,
+    .news-section,
+    .voice-section {
+      padding-top: 76px !important;
+      padding-bottom: 76px !important;
       margin: 0 !important;
-      background: #F8F9FA;
     }
 
-    /* 内部要素の余白を極限まで削る：足し算を防ぐ */
-    .featured-jobs-section .section-title {
+    /* 内部要素の余白統制 */
+    .featured-jobs-section .section-title,
+    .services-section .section-title,
+    .target-section .section-title,
+    .flow-section .section-title,
+    .news-section .section-title,
+    .voice-section .section-title {
       margin-top: 0 !important;
-      margin-bottom: 8px !important; /* タイトルのすぐ下にサブタイトル */
+      margin-bottom: 16px !important;
     }
 
-    .featured-jobs-section .section-sub {
+    .featured-jobs-section .section-sub,
+    .services-section .section-sub,
+    .target-section .section-sub,
+    .flow-section .section-sub,
+    .news-section .section-sub,
+    .voice-section .section-sub {
       margin-top: 0 !important;
-      margin-bottom: 24px !important; /* サブタイトルの下に少し空けてカード */
+      margin-bottom: 40px !important;
     }
 
-    .featured-jobs-list {
+    .featured-jobs-list,
+    .services-grid,
+    .target-grid,
+    .flow-steps,
+    .news-grid,
+    .voice-grid {
       margin-top: 0 !important;
-      margin-bottom: 24px !important; /* カードの下にすぐボタン */
+      margin-bottom: 40px !important;
     }
   </style>
 </head>
