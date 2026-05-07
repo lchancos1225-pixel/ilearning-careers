@@ -268,7 +268,8 @@ ul, ol { list-style: none; }
   grid-template-columns: 1fr;
   gap: 60px;
   align-items: center;
-  max-width: 720px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-badge {
@@ -1265,11 +1266,12 @@ select.form-control {
    ============================================ */
 @media (min-width: 769px) {
   .hero-stats {
-    display: flex;
+    display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
     gap: 80px;
     margin: 0 auto;
-    width: fit-content;
   }
 }
 
