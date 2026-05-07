@@ -436,16 +436,24 @@ ul, ol { list-style: none; }
    注目の求人セクション
    ============================================ */
 .featured-jobs-section {
-  padding: 100px 0;
+  padding: 76px 0;
   background: #F8F9FA;
+}
+
+.featured-jobs-section .section-title {
+  margin-bottom: 76px;
+}
+
+.featured-jobs-section .section-sub {
+  margin-bottom: 76px;
 }
 
 .featured-jobs-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 40px 20px;
-  margin-bottom: 48px;
+  padding: 0 20px;
+  margin-bottom: 76px;
 }
 
 .job-item {
