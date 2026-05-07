@@ -64,7 +64,7 @@
     .carousel-container {
       flex: 1;
       overflow: hidden;
-      margin: 0 20px;
+      margin: 0 50px;
     }
 
     .featured-jobs-list {
@@ -76,8 +76,8 @@
     }
 
     .featured-jobs-list .job-item {
-      flex: 0 0 calc(33.333% - 14px);
-      min-width: 280px;
+      flex: 0 0 300px;
+      width: 300px;
     }
 
     .carousel-arrow {
@@ -93,33 +93,41 @@
       font-size: 24px;
       cursor: pointer;
       z-index: 10;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .carousel-arrow:hover {
       background: rgba(227, 176, 75, 1);
+      transform: translateY(-50%) scale(1.1);
     }
 
     .carousel-arrow-left {
-      left: 0;
+      left: -10px;
     }
 
     .carousel-arrow-right {
-      right: 0;
+      right: -10px;
     }
 
     @media (max-width: 1024px) {
       .featured-jobs-list .job-item {
-        flex: 0 0 calc(50% - 10px);
+        flex: 0 0 280px;
+        width: 280px;
+      }
+
+      .carousel-container {
+        margin: 0 40px;
       }
     }
 
     @media (max-width: 768px) {
       .featured-jobs-list .job-item {
-        flex: 0 0 100%;
+        flex: 0 0 260px;
+        width: 260px;
       }
 
       .carousel-arrow {
@@ -129,7 +137,15 @@
       }
 
       .carousel-container {
-        margin: 0 10px;
+        margin: 0 30px;
+      }
+
+      .carousel-arrow-left {
+        left: 0;
+      }
+
+      .carousel-arrow-right {
+        right: 0;
       }
     }
   </style>
@@ -797,15 +813,29 @@
     // カルーセル機能
     let currentIndex = 0;
     const totalCards = 6;
-    let cardsPerView = 3;
+    let cardWidth = 300;
+    let gap = 20;
+    let maxIndex = 0;
 
-    function updateCardsPerView() {
-      if (window.innerWidth <= 768) {
-        cardsPerView = 1;
-      } else if (window.innerWidth <= 1024) {
-        cardsPerView = 2;
-      } else {
-        cardsPerView = 3;
+    function updateCarouselMetrics() {
+      const list = document.querySelector('.featured-jobs-list');
+      if (!list) return;
+
+      const card = list.querySelector('.job-item');
+      if (card) {
+        const computedStyle = window.getComputedStyle(card);
+        cardWidth = card.offsetWidth;
+        gap = 20; // fixed gap
+      }
+
+      // Calculate max index based on visible cards
+      const container = document.querySelector('.carousel-container');
+      if (container) {
+        const containerWidth = container.offsetWidth;
+        const totalCardWidth = cardWidth + gap;
+        const visibleCards = Math.floor(containerWidth / totalCardWidth);
+        maxIndex = totalCards - visibleCards;
+        if (maxIndex < 0) maxIndex = 0;
       }
     }
 
@@ -813,25 +843,24 @@
       const list = document.querySelector('.featured-jobs-list');
       if (!list) return;
 
-      updateCardsPerView();
+      updateCarouselMetrics();
       
       currentIndex += direction;
 
       // ループ機能
       if (currentIndex < 0) {
-        currentIndex = totalCards - cardsPerView;
-      } else if (currentIndex > totalCards - cardsPerView) {
+        currentIndex = maxIndex;
+      } else if (currentIndex > maxIndex) {
         currentIndex = 0;
       }
 
-      const cardWidth = list.querySelector('.job-item').offsetWidth + 20; // gap: 20px
-      const translateX = -(currentIndex * cardWidth);
+      const translateX = -(currentIndex * (cardWidth + gap));
       list.style.transform = `translateX(${translateX}px)`;
     }
 
     // ウィンドウサイズ変更時に再計算
     window.addEventListener('resize', () => {
-      updateCardsPerView();
+      updateCarouselMetrics();
       currentIndex = 0;
       const list = document.querySelector('.featured-jobs-list');
       if (list) {
@@ -839,8 +868,13 @@
       }
     });
 
-    // 初期化
-    updateCardsPerView();
+    // 初期化（DOM読み込み後）
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCarouselMetrics();
+    });
+
+    // 初期化（即時実行）
+    updateCarouselMetrics();
   </script>
 </body>
 </html>
