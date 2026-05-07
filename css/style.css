@@ -1263,6 +1263,12 @@ select.form-control {
 /* ============================================
    レスポンシブ
    ============================================ */
+@media (min-width: 769px) {
+  .hero-stats {
+    gap: 80px;
+  }
+}
+
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .flow-steps    { grid-template-columns: repeat(3, 1fr); }
