@@ -1265,7 +1265,11 @@ select.form-control {
    ============================================ */
 @media (min-width: 769px) {
   .hero-stats {
+    display: flex;
+    justify-content: center !important;
     gap: 80px;
+    margin: 0 auto;
+    width: fit-content;
   }
 }
 
