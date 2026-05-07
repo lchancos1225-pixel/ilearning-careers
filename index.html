@@ -1,4 +1,3 @@
-HELLO JUN 2026
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,25 +7,31 @@ HELLO JUN 2026
   <title>アイ・ラーニング キャリア支援 | 学生と企業をつなぐ</title>
   <link rel="stylesheet" href="css/style.css?v=FINAL_TEST_001">
   <style>
-    /* Inline CSS test for featured jobs section */
-    body { background: red !important; }
-    .featured-jobs-section * { 
-      margin: 0 !important; 
-      padding: 0 !important; 
-    }
+    /* 全体背景とデバッグ表示の完全消去 */
+    body { background: #ffffff !important; }
+    
+    /* セクション全体の余白設定：上下合わせて76px */
     .featured-jobs-section {
-      padding-top: 76px !important;
-      padding-bottom: 76px !important;
+      padding-top: 38px !important;
+      padding-bottom: 38px !important;
       margin: 0 !important;
+      background: #F8F9FA;
     }
+
+    /* 内部要素の余白を極限まで削る：足し算を防ぐ */
     .featured-jobs-section .section-title {
-      margin-bottom: 16px !important;
+      margin-top: 0 !important;
+      margin-bottom: 8px !important; /* タイトルのすぐ下にサブタイトル */
     }
+
     .featured-jobs-section .section-sub {
-      margin-bottom: 40px !important;
+      margin-top: 0 !important;
+      margin-bottom: 24px !important; /* サブタイトルの下に少し空けてカード */
     }
+
     .featured-jobs-list {
-      margin-bottom: 40px !important;
+      margin-top: 0 !important;
+      margin-bottom: 24px !important; /* カードの下にすぐボタン */
     }
   </style>
 </head>
@@ -145,12 +150,12 @@ HELLO JUN 2026
   <!-- ===== 注目の求人 ===== -->
   <section class="featured-jobs-section">
     <div class="container">
-      <h2 class="section-title reveal">注目の求人</h2>
-      <p class="section-sub reveal"><span></span>新着・人気の求人情報<span></span></p>
+      <h2 class="section-title">注目の求人</h2>
+      <p class="section-sub"><span></span>新着・人気の求人情報<span></span></p>
 
       <div class="featured-jobs-list">
         <!-- 求人カード 1 -->
-        <a href="pages/jobs.html" class="job-item reveal">
+        <a href="pages/jobs.html" class="job-item">
           <div class="job-bg-image">
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&h=600" alt="教育・塾運営">
           </div>
@@ -169,7 +174,7 @@ HELLO JUN 2026
         </a>
 
         <!-- 求人カード 2 -->
-        <a href="pages/jobs.html" class="job-item reveal">
+        <a href="pages/jobs.html" class="job-item">
           <div class="job-bg-image">
             <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&h=600" alt="ITエンジニア">
           </div>
@@ -188,7 +193,7 @@ HELLO JUN 2026
         </a>
 
         <!-- 求人カード 3 -->
-        <a href="pages/jobs.html" class="job-item reveal">
+        <a href="pages/jobs.html" class="job-item">
           <div class="job-bg-image">
             <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=400&h=600" alt="金融・営業">
           </div>
@@ -206,7 +211,7 @@ HELLO JUN 2026
         </a>
 
         <!-- 求人カード 4 -->
-        <a href="pages/jobs.html" class="job-item reveal">
+        <a href="pages/jobs.html" class="job-item">
           <div class="job-bg-image">
             <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&h=600" alt="医療・営業">
           </div>
@@ -224,7 +229,7 @@ HELLO JUN 2026
         </a>
       </div>
 
-      <div class="featured-jobs-cta reveal">
+      <div class="featured-jobs-cta">
         <a href="pages/jobs.html" class="btn btn-primary">すべての求人を見る →</a>
       </div>
     </div>
@@ -233,46 +238,46 @@ HELLO JUN 2026
   <!-- ===== サービス ===== -->
   <section class="services-section">
     <div class="container">
-      <h2 class="section-title reveal">サービス紹介</h2>
-      <p class="section-sub reveal"><span></span>学生の未来をトータルサポート<span></span></p>
+      <h2 class="section-title">サービス紹介</h2>
+      <p class="section-sub"><span></span>学生の未来をトータルサポート<span></span></p>
 
       <div class="services-grid">
-        <div class="service-card reveal">
+        <div class="service-card">
           <div class="service-icon">💼</div>
           <h3>インターンシップ紹介</h3>
           <p>業界や職種を超えた幅広いインターンシップをご紹介。実際の業務体験を通じて自分に合ったキャリアを発見できます。</p>
           <a href="pages/for-students.html#internship" class="service-link">詳しく見る →</a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card">
           <div class="service-icon">🏢</div>
           <h3>企業説明会</h3>
           <p>毎月複数回の合同説明会・個別説明会を開催。パートナー企業の人事担当者と直接対話できる貴重な機会です。</p>
           <a href="pages/for-students.html#seminar" class="service-link">詳しく見る →</a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card">
           <div class="service-icon">📚</div>
           <h3>就職アドバイス</h3>
           <p>塾講師として生徒と向き合ってきた経験を活かし、一人ひとりのペースに合わせた就職活動の戦略を一緒に考えます。</p>
           <a href="pages/for-students.html#advice" class="service-link">詳しく見る →</a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card">
           <div class="service-icon">✏️</div>
           <h3>レジュメ・ES添削</h3>
           <p>「伝わる」自己PRの書き方を丁寧に指導。業界・企業ごとに合わせた書き方で、選考通過率を高めます。</p>
           <a href="pages/for-students.html#resume" class="service-link">詳しく見る →</a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card">
           <div class="service-icon">🎤</div>
           <h3>面接対策</h3>
           <p>模擬面接・フィードバックを繰り返すことで自信と対応力を育成。グループ面接対策も実施しています。</p>
           <a href="pages/for-students.html#interview" class="service-link">詳しく見る →</a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card">
           <div class="service-icon">🌱</div>
           <h3>キャリアカウンセリング</h3>
           <p>「何がしたいかわからない」から始まっても大丈夫。自己分析から将来設計まで、資格保有のカウンセラーが伴走します。</p>
@@ -285,11 +290,11 @@ HELLO JUN 2026
   <!-- ===== 対象者（学生 / 企業） ===== -->
   <section class="target-section">
     <div class="container">
-      <h2 class="section-title reveal">ご利用いただける方</h2>
-      <p class="section-sub reveal"><span></span>学生・企業、双方に向けたサービスを提供<span></span></p>
+      <h2 class="section-title">ご利用いただける方</h2>
+      <p class="section-sub"><span></span>学生・企業、双方に向けたサービスを提供<span></span></p>
 
       <div class="target-grid">
-        <div class="target-card students reveal" data-icon="🎓">
+        <div class="target-card students" data-icon="🎓">
           <span class="target-tag">学生・求職者向け</span>
           <h3>就職・転職を<br>目指す方へ</h3>
           <p>卒業生はもちろん、塾通いのOB・OGも大歓迎。学びの場で培った粘り強さをキャリアに活かしましょう。</p>
@@ -302,7 +307,7 @@ HELLO JUN 2026
           <a href="pages/for-students.html" class="btn btn-secondary">求職者向けサービスを見る →</a>
         </div>
 
-        <div class="target-card companies reveal" data-icon="🏢">
+        <div class="target-card companies" data-icon="🏢">
           <span class="target-tag">企業・採用担当者向け</span>
           <h3>優秀な人材を<br>採用したい企業様へ</h3>
           <p>43年間、学びに真摯に向き合ってきた学生を採用候補としてご紹介。学習習慣のある人材は即戦力になります。</p>
@@ -322,7 +327,7 @@ HELLO JUN 2026
   <section class="strength-section">
     <div class="container">
       <div class="strength-grid">
-        <div class="years-visual reveal">
+        <div class="years-visual">
           <div class="years-number">43</div>
           <div class="years-label">年間の教育実績</div>
           <p style="opacity:0.85; font-size:0.92rem; margin-bottom:28px;">
@@ -349,7 +354,7 @@ HELLO JUN 2026
           </div>
         </div>
 
-        <div class="strength-text reveal">
+        <div class="strength-text">
           <h2>
             教育のプロだから<br>できる、<br>
             <em>本当の就活支援</em>。
@@ -399,8 +404,8 @@ HELLO JUN 2026
   <!-- ===== 利用の流れ ===== -->
   <section class="flow-section">
     <div class="container">
-      <h2 class="section-title reveal">ご利用の流れ</h2>
-      <p class="section-sub reveal"><span></span>登録から内定まで、ステップで確認<span></span></p>
+      <h2 class="section-title">ご利用の流れ</h2>
+      <p class="section-sub"><span></span>登録から内定まで、ステップで確認<span></span></p>
 
       <div class="flow-tabs">
         <button class="flow-tab active" onclick="switchFlow('student')">学生の場合</button>
@@ -408,27 +413,27 @@ HELLO JUN 2026
       </div>
 
       <div id="flow-student" class="flow-steps">
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">1</div>
           <h4>無料登録</h4>
           <p>Web登録またはお電話にてご登録。数分で完了します。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">2</div>
           <h4>カウンセリング</h4>
           <p>担当者との初回面談で希望や強みを整理します。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">3</div>
           <h4>求人提案</h4>
           <p>プロフィールに合った求人・インターンを厳選提案。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">4</div>
           <h4>選考サポート</h4>
           <p>ES添削・模擬面接など選考の全フェーズを支援。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">5</div>
           <h4>内定・入社</h4>
           <p>内定後も条件交渉や入社準備まで全力サポート。</p>
@@ -436,27 +441,27 @@ HELLO JUN 2026
       </div>
 
       <div id="flow-company" class="flow-steps" style="display:none;">
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">1</div>
           <h4>採用ヒアリング</h4>
           <p>求める人物像・採用条件について詳しくお伺いします。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">2</div>
           <h4>求人掲載</h4>
           <p>アイ・ラーニングの求人データベースに求人を掲載します。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">3</div>
           <h4>候補者紹介</h4>
           <p>厳選した候補者のレジュメをご提출します。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">4</div>
           <h4>選考実施</h4>
           <p>面接日程の調整から選考結果の通知まで代行します。</p>
         </div>
-        <div class="flow-step reveal">
+        <div class="flow-step">
           <div class="flow-step-num">5</div>
           <h4>採用・入社</h4>
           <p>内定通知・条件提示のサポートを行い採用完了。</p>
@@ -468,11 +473,11 @@ HELLO JUN 2026
   <!-- ===== お知らせ & イベント ===== -->
   <section class="news-section">
     <div class="container">
-      <h2 class="section-title reveal">お知らせ・イベント</h2>
-      <p class="section-sub reveal"><span></span>最新情報をお届けします<span></span></p>
+      <h2 class="section-title">お知らせ・イベント</h2>
+      <p class="section-sub"><span></span>最新情報をお届けします<span></span></p>
 
       <div class="news-grid">
-        <div class="news-list reveal">
+        <div class="news-list">
           <div class="news-item">
             <span class="news-date">2025.04.01</span>
             <span class="news-tag tag-event">イベント</span>
@@ -505,7 +510,7 @@ HELLO JUN 2026
           </div>
         </div>
 
-        <div class="event-card reveal">
+        <div class="event-card">
           <h3>📅 直近のイベント</h3>
           <div class="event-items">
             <div class="event-item">
@@ -536,11 +541,11 @@ HELLO JUN 2026
   <!-- ===== 卒業生・企業の声 ===== -->
   <section class="voice-section">
     <div class="container">
-      <h2 class="section-title reveal">ご利用者の声</h2>
-      <p class="section-sub reveal"><span></span>実際にご利用いただいた方々のご感想<span></span></p>
+      <h2 class="section-title">ご利用者の声</h2>
+      <p class="section-sub"><span></span>実際にご利用いただいた方々のご感想<span></span></p>
 
       <div class="voice-grid">
-        <div class="voice-card reveal">
+        <div class="voice-card">
           <div class="voice-quote">"</div>
           <p>学習塾時代からお世話になっていたので、担当の方が私の性格を知ってくれており、最初から相談しやすかったです。ESの添削を3回受けたおかげで、第一志望に合格できました！</p>
           <div class="voice-author">
@@ -552,7 +557,7 @@ HELLO JUN 2026
           </div>
         </div>
 
-        <div class="voice-card reveal">
+        <div class="voice-card">
           <div class="voice-quote">"</div>
           <p>インターンシップで実際の業務を体験できたことで、就活の軸がはっきりしました。面接の練習も何度もしてもらえて、本番では全然緊張しませんでした。</p>
           <div class="voice-author">
@@ -564,7 +569,7 @@ HELLO JUN 2026
           </div>
         </div>
 
-        <div class="voice-card reveal">
+        <div class="voice-card">
           <div class="voice-quote">"</div>
           <p>紹介いただいた学生は、学習塾で鍛えられているだけあって、課題への粘り強さが際立っています。採用後の定着率もよく、毎年お願いしています。</p>
           <div class="voice-author">
@@ -582,9 +587,9 @@ HELLO JUN 2026
   <!-- ===== CTA ===== -->
   <section class="cta-section">
     <div class="container">
-      <h2 class="reveal">まずは無料相談から<br>始めてみませんか？</h2>
-      <p class="reveal">就職活動に不安を感じている方も、採用強化を考えている企業様も、お気軽にご相談ください。</p>
-      <div class="cta-buttons reveal">
+      <h2>まずは無料相談から<br>始めてみませんか？</h2>
+      <p>就職活動に不安を感じている方も、採用強化を考えている企業様も、お気軽にご相談ください。</p>
+      <div class="cta-buttons">
         <a href="pages/contact.html" class="btn btn-primary">無料相談を申し込む →</a>
         <a href="pages/for-students.html" class="btn btn-secondary">サービス詳細を見る</a>
       </div>
