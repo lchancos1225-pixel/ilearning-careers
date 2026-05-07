@@ -443,11 +443,11 @@ ul, ol { list-style: none; }
 }
 
 .featured-jobs-section .section-title {
-  margin-bottom: 76px !important;
+  margin-bottom: 16px !important;
 }
 
 .featured-jobs-section .section-sub {
-  margin-bottom: 76px !important;
+  margin-bottom: 40px !important;
 }
 
 .featured-jobs-list {
@@ -456,7 +456,7 @@ ul, ol { list-style: none; }
   gap: 20px;
   padding: 0 20px;
   margin-top: 0 !important;
-  margin-bottom: 76px !important;
+  margin-bottom: 40px !important;
 }
 
 .job-item {
