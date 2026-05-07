@@ -10,27 +10,29 @@
     /* 全体背景とデバッグ表示の完全消去 */
     body { background: #ffffff !important; }
     
-    /* セクション全体の余白設定：上下76px */
+    /* 全要素の margin-top を 0 に強制 */
+    * { margin-top: 0 !important; }
+    
+    /* セクション全体の余白設定：上下38px（76pxの半分） */
     .featured-jobs-section,
     .services-section,
     .target-section,
     .flow-section,
     .news-section,
     .voice-section {
-      padding-top: 76px !important;
-      padding-bottom: 76px !important;
+      padding-top: 38px !important;
+      padding-bottom: 38px !important;
       margin: 0 !important;
     }
 
-    /* 内部要素の余白統制：最小限に固定 */
+    /* 内部要素の余白統制：半分に圧縮 */
     .featured-jobs-section .section-title,
     .services-section .section-title,
     .target-section .section-title,
     .flow-section .section-title,
     .news-section .section-title,
     .voice-section .section-title {
-      margin-top: 0 !important;
-      margin-bottom: 12px !important;
+      margin-bottom: 6px !important;
     }
 
     .featured-jobs-section .section-sub,
@@ -39,8 +41,7 @@
     .flow-section .section-sub,
     .news-section .section-sub,
     .voice-section .section-sub {
-      margin-top: 0 !important;
-      margin-bottom: 32px !important;
+      margin-bottom: 16px !important;
     }
 
     .featured-jobs-list,
@@ -49,8 +50,7 @@
     .flow-steps,
     .news-grid,
     .voice-grid {
-      margin-top: 0 !important;
-      margin-bottom: 32px !important;
+      margin-bottom: 16px !important;
     }
 
     /* カルーセル用CSS */
@@ -58,7 +58,7 @@
       position: relative;
       display: flex;
       align-items: center;
-      margin-bottom: 32px !important;
+      margin-bottom: 16px !important;
     }
 
     .carousel-container {
@@ -671,7 +671,6 @@
               <div class="place">📍 東京・渋谷会場</div>
             </div>
           </div>
-          <br>
           <a href="pages/contact.html" class="btn btn-secondary" style="width:100%; justify-content:center; margin-top:8px;">
             イベントに申し込む →
           </a>
