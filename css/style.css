@@ -433,6 +433,136 @@ ul, ol { list-style: none; }
 }
 
 /* ============================================
+   注目の求人セクション
+   ============================================ */
+.featured-jobs-section {
+  padding: 100px 0;
+  background: #F8F9FA;
+}
+
+.featured-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.featured-job-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.job-image {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(26,79,153,0.1), rgba(26,79,153,0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.job-image-placeholder {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.job-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.job-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge-new { background: #e74c3c; color: #fff; }
+.badge-shinsotsu { background: rgba(26,79,153,0.12); color: var(--primary); }
+.badge-chuto { background: rgba(227,176,75,0.18); color: var(--accent-dark); }
+.badge-intern { background: rgba(39,174,96,0.12); color: var(--success); }
+
+.featured-job-card h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8em;
+}
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.job-salary {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.job-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.update-date {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.btn-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+.featured-job-card:hover .btn-link {
+  color: var(--accent-dark);
+}
+
+.featured-jobs-cta {
+  text-align: center;
+}
+
+/* ============================================
    サービスセクション
    ============================================ */
 .services-section {
@@ -1279,6 +1409,7 @@ select.form-control {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .flow-steps    { grid-template-columns: repeat(3, 1fr); }
   .footer-inner  { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .featured-jobs-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1296,6 +1427,7 @@ select.form-control {
   .footer-inner     { grid-template-columns: 1fr; }
   .services-grid    { grid-template-columns: 1fr; }
   .achievement-divider { display: none; }
+  .featured-jobs-grid { grid-template-columns: 1fr; }
 
   .site-nav { display: none; }
   .site-nav.open {
