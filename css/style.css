@@ -1301,7 +1301,7 @@ select.form-control {
   .hamburger { display: flex; }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 480px) {
   /* Hero stats section - fix layout for small screens */
   .hero-stats {
     grid-template-columns: 1fr 1fr;
@@ -1334,31 +1334,46 @@ select.form-control {
     line-height: 1.3;
   }
   
-  /* Achievement bar - fix layout for small screens */
+  /* Achievement bar - strict 2x2 grid layout for mobile */
   .achievement-bar {
-    padding: 16px 0;
+    padding: 20px 0;
   }
   
   .achievement-inner {
-    gap: 16px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 10px;
+    justify-items: center;
+    align-items: start;
+    padding: 20px;
+    width: 100%;
   }
   
   .achievement-item {
-    gap: 8px;
-    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    width: 100%;
+    margin: 0;
+    padding: 12px 8px;
   }
   
   .achievement-item .icon {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    line-height: 1;
   }
   
   .achievement-item .text strong {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.2;
   }
   
   .achievement-item .text span {
     font-size: 0.75rem;
+    line-height: 1.3;
   }
 }
 
