@@ -13,8 +13,8 @@
 :root {
   --primary:       #1a4f99;
   --primary-dark:  #0f3370;
-  --accent:        #F1C40F;
-  --accent-dark:   #D4AC0D;
+  --accent:        #E3B04B;
+  --accent-dark:   #C4953A;
   --text:          #333333;
   --text-light:    #666666;
   --bg:            #f8f9fc;
@@ -96,7 +96,7 @@ ul, ol { list-style: none; }
 .btn-primary:hover {
   background: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(241,196,15,0.4);
+  box-shadow: 0 6px 20px rgba(227,176,75,0.4);
 }
 
 .btn-secondary {
@@ -237,7 +237,7 @@ ul, ol { list-style: none; }
    ヒーローセクション
    ============================================ */
 .hero {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #2d6bd4 100%);
+  background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
   color: var(--white);
   padding: 100px 0 80px;
   position: relative;
@@ -276,8 +276,8 @@ ul, ol { list-style: none; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(241,196,15,0.2);
-  border: 1px solid rgba(241,196,15,0.4);
+  background: rgba(227,176,75,0.2);
+  border: 1px solid rgba(227,176,75,0.4);
   color: var(--accent);
   font-size: 0.85rem;
   font-weight: 700;
@@ -391,7 +391,7 @@ ul, ol { list-style: none; }
    実績バナー
    ============================================ */
 .achievement-bar {
-  background: var(--primary-dark);
+  background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
   color: var(--white);
   padding: 20px 0;
 }
@@ -546,7 +546,7 @@ ul, ol { list-style: none; }
 
 .target-card.companies {
   background:
-    linear-gradient(135deg, rgba(212,172,13,0.65), rgba(241,196,15,0.60)),
+    linear-gradient(135deg, rgba(196,149,58,0.65), rgba(227,176,75,0.60)),
     url('../sozai/biru.png') center/cover no-repeat;
 }
 
@@ -872,7 +872,7 @@ ul, ol { list-style: none; }
 
 .tag-event   { background: rgba(26,79,153,0.1);  color: var(--primary); }
 .tag-news    { background: rgba(39,174,96,0.1);  color: var(--success); }
-.tag-info    { background: rgba(241,196,15,0.15); color: var(--accent-dark); }
+.tag-info    { background: rgba(227,176,75,0.15); color: var(--accent-dark); }
 
 .news-item h4 {
   font-size: 0.92rem;
